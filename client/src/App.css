@@ -1,6 +1,13 @@
-.App {
+body{
   text-align: center;
+  /* background-color: black; */
+  background-image: url("../src/images/background2.jpg");
+  /* background-repeat: no-repeat; */
+
 }
+/* .App {
+  
+} */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

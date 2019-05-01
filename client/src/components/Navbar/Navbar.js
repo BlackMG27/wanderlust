@@ -5,9 +5,9 @@ function NavTabs(props) {
 
     return (
 
-        <nav className="red">
+        <nav className="black">
             <div className="nav-wrapper">
-                <a href="/" class="brand-logo">Wanderlust</a>
+                <a href="/" className="brand-logo">Wanderlust</a>
                 <ul className="right hide-on-med-and-down">
                     <li className="nav-item">
                         <a href="/review" onClick={() => props.handlePageChange("Review")}

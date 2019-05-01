@@ -6,12 +6,14 @@ import LoginForm from "./pages/LoginForm"
 import SignupForm from "./pages/SignupForm"
 import ReviewForm from "./pages/ReviewForm"
 import NavTabs from './components/Navbar/Navbar';
+import '../../client/src/App.css'
+
 
 
 function App() {
   return (
     <div className="App">
-      <NavTabs></NavTabs>
+      <NavTabs />
 
       <Router>
 
