@@ -18,16 +18,16 @@ function NavTabs(props) {
                     <li className="nav-item">
                         <a href="/login" onClick={() => props.handlePageChange("Login")}
                             className={props.currentPage === "Login" ? "nav-link active" : "nav-link"} >
-                            Login
+                            Login / Signup
 
                 </a>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <a href="/signup" onClick={() => props.handlePageChange("Signup")}
                             className={props.currentPage === "Signup" ? "nav-link active" : "nav-link"} >
                             Signup
                 </a>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </nav>
