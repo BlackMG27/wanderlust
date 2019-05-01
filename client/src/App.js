@@ -5,17 +5,21 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import LoginForm from "./pages/LoginForm"
 import SignupForm from "./pages/SignupForm"
 import ReviewForm from "./pages/ReviewForm"
+import NavTabs from './components/Navbar/Navbar';
 
 
 function App() {
   return (
     <div className="App">
+      <NavTabs></NavTabs>
+
       <Router>
 
         <h1>Welcome to Wanderlust!</h1>
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/signup" component={SignupForm} />
         <Route exact path="/review" component={ReviewForm} />
+
       </Router>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
