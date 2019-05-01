@@ -1,3 +1,4 @@
 module.exports = {
-    Test: require("./testModel")
+    Review: require("./reviewModel"),
+    User: require("./userModel")
 };
