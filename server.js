@@ -6,11 +6,9 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-<<<<<<< HEAD
-var db = require("./models");
-=======
 
->>>>>>> master
+var db = require("./models");
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
