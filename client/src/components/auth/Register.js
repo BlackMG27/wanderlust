@@ -54,7 +54,7 @@ class Register extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div className="container">
+            <div className="container z-depth-1 cyan lighten-5 row">
                 <div className="row">
                     <div className="col s8 offset-s2">
                         <Link to="/" className="btn-flat waves-effect">
