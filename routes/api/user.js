@@ -9,4 +9,8 @@ router.route("/")
 router.route("/:id")
     .get(userController.findById);
 
+router.route("/pop/:id")
+    .get(userController.populateUser)
+
+
 module.exports = router;

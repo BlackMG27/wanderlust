@@ -28,7 +28,10 @@ const UserModel = new Schema({
     userCreated: {
         type: Date,
         default: Date.now
-    }
+    },
+    review: [{
+        type: Schema.Types.ObjectId, ref: "Review"
+    }]
 })
 
 const User = mongoose.model("User", UserModel);
