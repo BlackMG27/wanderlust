@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
-//import LoginForm from "./pages/LoginForm";
 import SignupForm from "./pages/SignupForm";
 import ReviewForm from "./pages/ReviewForm";
 import NavTabs from './components/Navbar/Navbar';
@@ -37,7 +35,11 @@ if (localStorage.jwtToken) {
   }
 }
 
+console.log(logoutUser)
+
 class App extends Component {
+
+
   render() {
     return (
       <Provider store={store} >
@@ -46,7 +48,6 @@ class App extends Component {
           <Router>
             <NavTabs />
             <h1 className="text-align: center">Welcome to Wanderlust!</h1>
-            {/* <Landing /> */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignupForm} />
@@ -57,20 +58,7 @@ class App extends Component {
           </Router>
         </div>
 
-        {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-        >
-        Learn React
-        </a>
-      </header> */}
+
       </Provider>
     );
   }
