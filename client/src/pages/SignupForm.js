@@ -9,7 +9,7 @@ class SignupForm extends Component {
                     {/* <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" /> */}
                     <div className="section"></div>
 
-                    <h5>Sign up and Create an Account to Wanderlast</h5>
+                    <h5>Sign up and Create an Account to Wanderlust</h5>
                     <div className="section"></div>
 
                     <div className="container">
