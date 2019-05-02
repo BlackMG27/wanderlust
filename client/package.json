@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@amcharts/amcharts4": "^4.4.2",
+    "@amcharts/amcharts4-geodata": "^4.1.4",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "jwt-decode": "^2.2.0",
