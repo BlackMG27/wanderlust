@@ -9,7 +9,7 @@ class LoginForm extends Component {
                 <center >
                     <div className="section" ></div>
 
-                    <h5>Please login into your account</h5>
+                    <h5 className="text-align: center">Please login into your account</h5>
                     <div className="section"></div>
 
                     <div className="container">

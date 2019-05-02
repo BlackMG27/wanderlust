@@ -1,5 +1,5 @@
 import React from "react";
-// import DrawerToggleButton from '../sideNav/DrawerToggleButton';
+// import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 // import '../Navbar/Navbar.css'
 
 function NavTabs(props) {
