@@ -29,14 +29,20 @@ class SignupForm extends Component {
                                 </div>
                                 <div className='row'>
                                     <div className='input-field col s12'>
+                                        <input className='validate' type='email' name='email' id='email' />
+                                        <label className='email'>Enter your email</label>
+                                    </div>
+                                </div>
+                                <div className='row'>
+                                    <div className='input-field col s12'>
                                         <input className='validate' type='password' name='password' id='password' />
                                         <label className='password'>Enter your password</label>
                                     </div>
                                 </div>
                                 <div className='row'>
                                     <div className='input-field col s12'>
-                                        <input className='validate' type='email' name='email' id='email' />
-                                        <label className='email'>Enter your email</label>
+                                        <input className='validate' type='password' name='confirm-password' id='confirm-password' />
+                                        <label className='confirm-password'>Confirm password</label>
                                     </div>
                                 </div>
 
