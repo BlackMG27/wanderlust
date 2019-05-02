@@ -16,7 +16,6 @@ function App() {
       <h1 className="text-align: center">
         Welcome to Wanderlust !</h1>
       <Router>
-
         <Route exact path="/login" component={LoginForm}/>
         <Route exact path="/signup" component={SignupForm}/>
         <Route exact path="/review" component={ReviewForm}/>
