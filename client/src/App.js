@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -10,11 +9,12 @@ import store from "./store";
 //import LoginForm from "./pages/LoginForm";
 import SignupForm from "./pages/SignupForm";
 import ReviewForm from "./pages/ReviewForm";
-import Navbar from "./components/temp/Navbar";
-import Landing from "./components/temp/Landing";
+import NavTabs from './components/Navbar/Navbar';
+// import Landing from "./components/temp/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./private-route/PrivateRoute";
+
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -42,15 +42,14 @@ class App extends Component {
 
         <div className="App">
           <Router>
-            <Navbar />
-            <h1>Welcome to Wanderlust!</h1>
-            <Landing />
+            <NavTabs />
+            <h1 className="text-align: center">Welcome to Wanderlust!</h1>
+            {/* <Landing /> */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignupForm} />
             <Switch>
               <PrivateRoute exact path="/reviewform" component={ReviewForm} />
-
             </Switch>
           </Router>
         </div>
