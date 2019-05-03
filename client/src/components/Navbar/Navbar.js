@@ -12,39 +12,9 @@ function NavTabs(props) {
 
     return (
 
-        // <header className="black toolbar">
-        //     <nav className="toolbar__navigation">
-        //         <div />
-        //         <div className="toolbar__logo">
-        //             <a href="/">Wanderlust</a>
-        //         </div>
-        //         <div className="spacer" />
-        //         <div className="toolbar_navigation-items">
-        //             <ul>
-        //                 <li className="nav-item">
-        //                     <a href="/review" onClick={() => props.handlePageChange("Review")}
-        //                         className={props.currentPage === "Review" ? "nav-link active" : "nav-link"} >
-        //                         Review Form
-        //         </a>
-        //                 </li>
-        //                 <li className="nav-item">
-        //                     <a href="/login" onClick={() => props.handlePageChange("Login")}
-        //                         className={props.currentPage === "Login" ? "nav-link active" : "nav-link"} >
-        //                         Login / Signup
-
-        //          </a>
-        //                 </li>
-        //             </ul>
-        //         </div>
-        //     </nav>
-        // </header>
-
-
-
         <nav className="black toolbar">
             <div className="nav-wrapper toolbar__navigation">
                 <div>
-                    {/* <DrawerToggleButton click={props.drawerClickHandler} /> */}
                 </div>
                 <a href="/" className="brand-logo toolbar__logo">Wanderlust</a>
                 <ul className="right hide-on-med-and-down">
