@@ -5,14 +5,14 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
-import SignupForm from "./pages/SignupForm";
+//import SignupForm from "./pages/SignupForm";
 import ReviewForm from "./pages/ReviewForm";
 import NavTabs from './components/Navbar/Navbar';
 import Maps from './pages/Maps';
 import '../../client/src/App.css'
 // import Landing from "./components/temp/Landing";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import PrivateRoute from "./private-route/PrivateRoute";
 
 
@@ -50,7 +50,7 @@ class App extends Component {
             <h1 className="text-align: center">Welcome to Wanderlust!</h1>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignupForm} />
+            {/* <Route exact path="/signup" component={SignupForm} /> */}
             <Route exact path="/map" component={Maps} />
             <Switch>
               <PrivateRoute exact path="/reviewform" component={ReviewForm} />
