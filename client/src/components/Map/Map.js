@@ -1,7 +1,7 @@
 import React from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
-import {Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 
@@ -61,7 +61,7 @@ class Map extends React.Component {
             .on('hit', function (ev) {
                 const data = ev.target.dataItem.dataContext;
                 if (data.link) {
-                    return <Redirect to={data.link}/>
+                    return (<Link to={data.link}/>)
                 }
             })
 
