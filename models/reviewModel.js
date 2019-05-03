@@ -36,6 +36,9 @@ const ReviewModel = new Schema({
         type: Number,
         min: 1,
         max: 5
+    },
+    userId: {
+        type: String
     }
 })
 
