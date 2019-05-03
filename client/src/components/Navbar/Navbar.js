@@ -1,14 +1,14 @@
 import React from "react";
 // import DrawerToggleButton from '../sideNav/DrawerToggleButton';
 // import '../Navbar/Navbar.css'
-import { logoutUser } from "../../actions/authActions";
+// import { logoutUser } from "../../actions/authActions";
 
 //console.log("log", logoutUser)
 
 
 function NavTabs(props) {
 
-    console.log("log", logoutUser)
+    console.log("props", props)
 
     return (
 
@@ -85,8 +85,8 @@ function NavTabs(props) {
                     </li>
                     <li className="nav-item">
                         <a
-                            href="#"
-                            onClick={() => logoutUser}
+                            href="/placeholder"
+                            onClick={() => props.logout()}
                             className=
                             {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
                     </li>

@@ -5,12 +5,10 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
-//import SignupForm from "./pages/SignupForm";
 import ReviewForm from "./pages/ReviewForm";
 import NavTabs from './components/Navbar/Navbar';
 import Maps from './pages/Maps';
 import '../../client/src/App.css'
-// import Landing from "./components/temp/Landing";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PrivateRoute from "./private-route/PrivateRoute";
@@ -35,9 +33,9 @@ if (localStorage.jwtToken) {
   }
 }
 
-console.log(logoutUser)
 
 class App extends Component {
+
 
 
   render() {
@@ -46,11 +44,10 @@ class App extends Component {
 
         <div className="App">
           <Router>
-            <NavTabs />
+            <NavTabs logout={logoutUser} />
             <h1 className="text-align: center">Welcome to Wanderlust!</h1>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            {/* <Route exact path="/signup" component={SignupForm} /> */}
             <Route exact path="/map" component={Maps} />
             <Switch>
               <PrivateRoute exact path="/reviewform" component={ReviewForm} />
