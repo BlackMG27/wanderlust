@@ -3,10 +3,10 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
-
+//import the api file here
 class Map extends React.Component {
 
-    test = () => {
+    test = (codesFromDB) => {
         let globalLink;
 
         am4core.useTheme(am4themes_animated);
@@ -35,7 +35,7 @@ class Map extends React.Component {
         polygonSeries.useGeodata = true;
         polygonSeries.exclude = ["AQ"]; // Exclude Antractica
         polygonSeries.tooltip.fill = am4core.color("#000000");
-
+        //
         polygonSeries.data = [
             {
                 'id': 'FR',
@@ -107,6 +107,9 @@ class Map extends React.Component {
     }
 
     componentDidMount() {
+
+        // API.findCountCOde().then(function(codesFromDB) {     this.test(codesFromDB)
+        // })
         this.test()
     }
     render() {

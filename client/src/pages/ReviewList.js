@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-
+import React, {Component, Fragment} from 'react';
+import ReviewListItem from './../components/ReviewList/ReviewListItem';
 
 class ReviewList extends Component {
-
-
     render() {
         return (
-            <div>
-
-                <h2>This is the review list form</h2>
-            </div>
+            <Fragment>
+                <div className="container">
+                    <ReviewListItem/>
+                </div>
+            </Fragment>
         )
-
     }
 }
 
