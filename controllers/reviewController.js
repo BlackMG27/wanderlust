@@ -17,7 +17,8 @@ module.exports = {
         console.log(req.body)
         db.Review
             .create(req.body.data)
-            .then(dbReview => res.json(dbReview))
+            .then(dbReview => { return db.User.findOneAndUpdate({ _id: req.body.data.userId }, { $push: { review: dbReview._id } }, { new: true }) })
+            .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err))
     }
 }
