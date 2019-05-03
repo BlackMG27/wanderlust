@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const passport = require("passport");
-//const users = require("./routes/users");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -26,10 +25,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wanderlust", { 
 app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
-// Routes
-//app.use("/api/users", users);
 
-// Add routes, both API and view
+
+// Add routes
 app.use(routes);
 
 // Start the API server
