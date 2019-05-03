@@ -3,5 +3,5 @@ const reviewRoutes = require("./review");
 const userRoutes = require("./user")
 
 router.use("/review", reviewRoutes);
-router.use("/user", userRoutes);
+router.use("/users", userRoutes);
 module.exports = router;

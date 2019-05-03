@@ -3,7 +3,7 @@ const reviewController = require("../../controllers/reviewController");
 
 //api/review
 router.route("/")
-    .get(reviewController.create);
+    .post(reviewController.create);
 
 // api/review/:id
 router.route("/:id")

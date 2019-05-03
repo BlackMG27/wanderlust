@@ -1,8 +1,14 @@
 import React from "react";
 // import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 // import '../Navbar/Navbar.css'
+import { logoutUser } from "../../actions/authActions";
+
+//console.log("log", logoutUser)
+
 
 function NavTabs(props) {
+
+    console.log("log", logoutUser)
 
     return (
 
@@ -44,21 +50,21 @@ function NavTabs(props) {
                 <ul className="right hide-on-med-and-down">
                     <li className="nav-item">
                         <a
-                            href="/review"
+                            href="/reviewform"
                             onClick={() => props.handlePageChange("Review")}
                             className={props.currentPage === "Review"
-                            ? "nav-link active"
-                            : "nav-link"}>
+                                ? "nav-link active"
+                                : "nav-link"}>
                             Review
                         </a>
-</li>
+                    </li>
                     <li className="nav-item">
                         <a
                             href="/login"
                             onClick={() => props.handlePageChange("Login")}
                             className={props.currentPage === "Login"
-                            ? "nav-link active"
-                            : "nav-link"}>
+                                ? "nav-link active"
+                                : "nav-link"}>
                             Login / Signup
 
                         </a>
@@ -69,13 +75,20 @@ function NavTabs(props) {
                             Signup
                 </a>
                     </li> */}
-                    <li>
+                    <li className="nav-item">
                         <a
                             href="/map"
                             onClick=
-                            { () => props.handlePageChange("Map") }
+                            {() => props.handlePageChange("Map")}
                             className=
-                            { props.currentPage === "Map" ? "nav-link active" : "nav-link" }>Map</a>
+                            {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
+                    </li>
+                    <li className="nav-item">
+                        <a
+                            href="#"
+                            onClick={() => logoutUser}
+                            className=
+                            {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
                     </li>
                 </ul>
             </div>
