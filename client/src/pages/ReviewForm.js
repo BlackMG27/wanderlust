@@ -17,7 +17,7 @@ class ReviewForm extends Component {
         country: "",
         dateStart: "",
         dateEnd: "",
-        rating: 0
+        rating: ""
     }
 
     onChange = e => {

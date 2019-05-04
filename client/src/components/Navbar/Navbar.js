@@ -53,10 +53,10 @@ function NavTabs(props) {
                             className=
                             {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item" onClick={props.logout}>
                         <a
-                            href="/placeholder"
-                            onClick={() => props.logout()}
+
+                            href="/"
                             className=
                             {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
                     </li>

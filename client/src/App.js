@@ -37,16 +37,19 @@ if (localStorage.jwtToken) {
 
 
 class App extends Component {
+  state = {
+    logout: false
+  }
 
 
-co
+
   render() {
     return (
       <Provider store={store} >
 
         <div className="App">
           <Router>
-            <NavTabs logout={logoutUser} /> 
+            <NavTabs logout={logoutUser()} />
             <h1 className="text-align: center">Welcome to Wanderlust!</h1>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
