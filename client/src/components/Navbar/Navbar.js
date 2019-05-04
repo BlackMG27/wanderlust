@@ -1,50 +1,20 @@
 import React from "react";
-// import DrawerToggleButton from '../sideNav/DrawerToggleButton';
+// import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 // import '../Navbar/Navbar.css'
-import { logoutUser } from "../../actions/authActions";
+// import { logoutUser } from "../../actions/authActions";
 
 //console.log("log", logoutUser)
 
 
 function NavTabs(props) {
 
-    console.log("log", logoutUser)
+    console.log("props", props)
 
     return (
-
-        // <header className="black toolbar">
-        //     <nav className="toolbar__navigation">
-        //         <div />
-        //         <div className="toolbar__logo">
-        //             <a href="/">Wanderlust</a>
-        //         </div>
-        //         <div className="spacer" />
-        //         <div className="toolbar_navigation-items">
-        //             <ul>
-        //                 <li className="nav-item">
-        //                     <a href="/review" onClick={() => props.handlePageChange("Review")}
-        //                         className={props.currentPage === "Review" ? "nav-link active" : "nav-link"} >
-        //                         Review Form
-        //         </a>
-        //                 </li>
-        //                 <li className="nav-item">
-        //                     <a href="/login" onClick={() => props.handlePageChange("Login")}
-        //                         className={props.currentPage === "Login" ? "nav-link active" : "nav-link"} >
-        //                         Login / Signup
-
-        //          </a>
-        //                 </li>
-        //             </ul>
-        //         </div>
-        //     </nav>
-        // </header>
-
-
 
         <nav className="black toolbar">
             <div className="nav-wrapper toolbar__navigation">
                 <div>
-                    {/* <DrawerToggleButton click={props.drawerClickHandler} /> */}
                 </div>
                 <a href="/" className="brand-logo toolbar__logo">Wanderlust</a>
                 <ul className="right hide-on-med-and-down">
@@ -83,10 +53,10 @@ function NavTabs(props) {
                             className=
                             {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item" onClick={props.logout}>
                         <a
-                            href="#"
-                            onClick={() => logoutUser}
+
+                            href="/"
                             className=
                             {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
                     </li>
