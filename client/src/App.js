@@ -12,6 +12,8 @@ import '../../client/src/App.css'
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PrivateRoute from "./private-route/PrivateRoute";
+import Review from "./pages/Review";
+import ReviewList from "./pages/ReviewList";
 
 
 // Check for token to keep user logged in
@@ -35,6 +37,9 @@ if (localStorage.jwtToken) {
 
 
 class App extends Component {
+  state = {
+    logout: false
+  }
 
 
 
@@ -44,11 +49,13 @@ class App extends Component {
 
         <div className="App">
           <Router>
-            <NavTabs logout={logoutUser} />
+            <NavTabs logout={logoutUser()} />
             <h1 className="text-align: center">Welcome to Wanderlust!</h1>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={Maps} />
+            <Route path="/reviewlist/:id" component={ReviewList} />
+            <Route path="/review/:id" component={Review} />
             <Switch>
               <PrivateRoute exact path="/reviewform" component={ReviewForm} />
             </Switch>

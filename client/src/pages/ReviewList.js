@@ -8,7 +8,7 @@ class ReviewList extends Component {
         return (
             <div>
 
-                <h2>This is the review list form</h2>
+                <h2>This is the review list for the country</h2>
             </div>
         )
 

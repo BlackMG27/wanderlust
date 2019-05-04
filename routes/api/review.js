@@ -8,7 +8,7 @@ router.route("/")
 
 // api/review/:id
 router.route("/:id")
-    .get(reviewController.findByReviewId);
+    .post(reviewController.findByReviewId);
 
 // api/review/list/:id
 router.route("/list/:id")
