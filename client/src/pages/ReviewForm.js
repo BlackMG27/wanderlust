@@ -44,10 +44,12 @@ class ReviewForm extends Component {
 
 
     handleFormSubmit = (user) => {
+        /// space////
         console.log(user.id, this.state.review)
         const query = {
             userId: user.id,
             review: this.state.review
+            // country: this.state.country
         }
         API.createReview(query).then((res) => {
             console.log("res", res)
