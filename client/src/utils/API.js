@@ -10,8 +10,8 @@ export default {
 
     showReview: function (id) {
         //let data = {data: query};
-        //console.log("data", data);
-        return axios.get("/api/review/" + id)
+        console.log("data", id);
+        return axios.post("/api/review/" + id)
     }
 
 }

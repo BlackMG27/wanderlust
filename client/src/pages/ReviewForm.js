@@ -16,7 +16,8 @@ class ReviewForm extends Component {
         program: "",
         country: "",
         dateStart: "",
-        dateEnd: ""
+        dateEnd: "",
+        rating: 0
     }
 
     onChange = e => {
@@ -47,11 +48,18 @@ class ReviewForm extends Component {
         console.log(user.id, this.state.review)
         const query = {
             userId: user.id,
-            review: this.state.review
+            review: this.state.review,
+            displayName: this.state.displayName,
+            img: this.state.img,
+            program: this.state.program,
+            country: this.state.country,
+            dateStart: this.state.dateStart,
+            dateEnd: this.state.dateEnd,
+            rating: this.state.rating
         }
         API.createReview(query).then((res) => {
             console.log("res", res)
-            console.log("saved?")
+            window.location.href = "./map"
         })
     }
 
