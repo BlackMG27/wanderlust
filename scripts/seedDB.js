@@ -158,10 +158,10 @@ const reviewSeed = [
 const userSeed = [
     {
         username: "Edith",
-        password: "lalalalalala22",
+        password: "testpassword22",
         email: "edith@edith.com",
         userCreated: new Date,
-        review: []
+        review: [("5cc9e8975aa5872fe49e936b")]
     }
 ]
 
