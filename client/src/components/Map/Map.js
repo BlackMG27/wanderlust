@@ -3,6 +3,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
+import API from "../../utils/API";
 //import the api file here
 class Map extends React.Component {
 
@@ -20,8 +21,8 @@ class Map extends React.Component {
         } catch (err) {
             chart.raiseCriticalError({
                 "message": "Map geodata could not be loaded. Please download the latest <a href=\"https://ww" +
-                        "w.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its cont" +
-                        "ents into the same directory as your amCharts files."
+                    "w.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its cont" +
+                    "ents into the same directory as your amCharts files."
             });
         }
         //sets the projection that will be used
@@ -36,17 +37,44 @@ class Map extends React.Component {
         polygonSeries.exclude = ["AQ"]; // Exclude Antractica
         polygonSeries.tooltip.fill = am4core.color("#000000");
         //
-        polygonSeries.data = [
-            {
-                'id': 'FR',
-                'color': am4core.color('#FECF6A'),
-                'link': 'https://www.meetup.com/a11ychi/events/261052295/'
-            }, {
-                'id': 'IT',
-                'color': am4core.color('#FECF6A'),
-                'link': 'https://htmlcolors.com/hex/fecf6a'
-            }
-        ]
+
+        let activeCodes = []
+        for (var i = 0; i < codesFromDB.data.length; i++) {
+            // console.log(codesFromDB.data[i].countryCode)
+            activeCodes.push(codesFromDB.data[i].countryCode);
+
+        }
+        console.log(activeCodes)
+
+        // activeCodes.map(codes => (
+        //     polygonSeries.data = [
+        //         {
+        //             'id': codes,
+        //             'color': am4core.color('#FECF6A'),
+        //             'link': `/review/list/${codes}`
+        //         }
+        //     ]
+        // ))
+
+        polygonSeries.data = activeCodes.map(codes => ({
+            'id': codes,
+            'color': am4core.color('#FECF6A'),
+            'link': `/review/list/${codes}`
+        })
+
+        )
+
+        // polygonSeries.data = [
+        //     {
+        //         'id': 'FR',
+        //         'color': am4core.color('#FECF6A'),
+        //         'link': 'https://www.meetup.com/a11ychi/events/261052295/'
+        //     }, {
+        //         'id': 'IT',
+        //         'color': am4core.color('#FECF6A'),
+        //         'link': 'https://htmlcolors.com/hex/fecf6a'
+        //     }
+        // ]
 
         const colorSet = new am4core.ColorSet();
 
@@ -108,9 +136,9 @@ class Map extends React.Component {
 
     componentDidMount() {
 
-        // API.findCountCOde().then(function(codesFromDB) {     this.test(codesFromDB)
-        // })
-        this.test()
+        API.findAllCodes()
+            .then(codesFromDB => this.test(codesFromDB))
+        // this.test()
     }
     render() {
 
