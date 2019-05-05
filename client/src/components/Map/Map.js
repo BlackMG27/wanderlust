@@ -46,16 +46,6 @@ class Map extends React.Component {
         }
         console.log(activeCodes)
 
-        // activeCodes.map(codes => (
-        //     polygonSeries.data = [
-        //         {
-        //             'id': codes,
-        //             'color': am4core.color('#FECF6A'),
-        //             'link': `/review/list/${codes}`
-        //         }
-        //     ]
-        // ))
-
         polygonSeries.data = activeCodes.map(codes => ({
             'id': codes,
             'color': am4core.color('#FECF6A'),
