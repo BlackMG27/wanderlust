@@ -37,9 +37,7 @@ if (localStorage.jwtToken) {
 
 
 class App extends Component {
-  state = {
-    logout: false
-  }
+
 
 
 
@@ -54,7 +52,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={Maps} />
-            <Route path="/review/list/:id" component={ReviewList} />
+            <Route path="/reviewlist/:id" component={ReviewList} />
             <Route path="/review/:id" component={Review} />
             <Switch>
               <PrivateRoute exact path="/reviewform" component={ReviewForm} />

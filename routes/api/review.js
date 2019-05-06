@@ -12,7 +12,7 @@ router.route("/:id")
 
 // api/review/list/:id
 router.route("/list/:id")
-    .get(reviewController.findByCountryId);
+    .post(reviewController.findByCountryId);
 
 // api/review/grab/:country
 router.route("/grab/:country")
