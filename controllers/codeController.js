@@ -21,5 +21,6 @@ module.exports = {
         res.json(newAvatar)
     }
     // we might not actually need this on the backend
+    //https://ui-avatars.com/api/?name=
 }
 

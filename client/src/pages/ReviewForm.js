@@ -16,6 +16,7 @@ class ReviewForm extends Component {
         img: "",
         program: "",
         country: "",
+        countryCode: "",
         dateStart: "",
         dateEnd: "",
         rating: ""
@@ -50,23 +51,31 @@ class ReviewForm extends Component {
 
 
     handleFormSubmit = (user) => {
-        /// space////
+        //thanks!
+
         console.log(user.id, this.state.review)
-        const query = {
-            userId: user.id,
-            review: this.state.review,
-            displayName: this.state.displayName,
-            img: this.state.img,
-            program: this.state.program,
-            country: this.state.country,
-            dateStart: this.state.dateStart,
-            dateEnd: this.state.dateEnd,
-            rating: this.state.rating
-        }
-        API.createReview(query).then((res) => {
-            console.log("res", res)
-            window.location.href = "./map"
-        })
+
+        API.grabCountryCode(this.state.country)
+            .then((res) => {
+                const query = {
+                    userId: user.id,
+                    review: this.state.review,
+                    displayName: this.state.displayName,
+                    img: this.state.img,
+                    program: this.state.program,
+                    country: this.state.country,
+                    countryCode: res.data,
+                    dateStart: this.state.dateStart,
+                    dateEnd: this.state.dateEnd,
+                    rating: this.state.rating
+                }
+                API.createReview(query).then((res) => {
+                    console.log("res", res)
+                    window.location.href = "./map"
+                })
+
+            })
+
     }
 
     //userCheck = user
