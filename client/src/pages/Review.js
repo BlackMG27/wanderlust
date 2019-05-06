@@ -14,6 +14,16 @@ class Review extends Component {
         review: ""
     }
 
+    imgStyle = {
+        height: "200px",
+        width: "200px",
+        borderRadius: "50%"
+    }
+
+    cardStyle = {
+        padding: "2rem"
+    }
+
     componentDidMount = () => {
         this.getIDFromURL();
 
@@ -47,16 +57,30 @@ class Review extends Component {
         console.log("state", this.state.id)
         return (
             <div className="container" >
-                <div className="card cyan lighter-5">
-                    <h5>This is the review</h5>
-                    <ul>
-                        <li>Country: {this.state.country}</li>
-                        <li>Rating: {this.state.rating} </li>
-                        <li>Dates Traveled:
-                        <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment> - <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateEnd}</Moment></li>
-                        <li>Program Name: {this.state.program} </li>
-                        <li>Review: {this.state.review}</li>
-                    </ul >
+                <div className="card cyan lighter-5" style={this.cardStyle}>
+                    <div className="row">
+                        <div className="col s12 m4"></div>
+                        <div className="col s12 m4 center-align">
+                            <img className="center-align" src={this.state.img} style={this.imgStyle} alt="photo" />
+                            <h5>{this.state.displayName}</h5>
+                        </div>
+                        <div className="col s12 m4"></div>
+                    </div>
+                    <div className="row">
+                        <div className="col s12 m4"></div>
+                        <div className="col s12 m4 center-align">
+                            <ul>
+                                <li>Program Name: {this.state.program} </li>
+                                <li>Rating: {this.state.rating} </li>
+                                <li>Dates Traveled:{" "}
+                                    <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment> - <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateEnd}</Moment></li>
+                                <li>Country: {this.state.country}</li>
+                                {/* <li>{this.state.review}</li> */}
+                            </ul >
+                        </div>
+                        <div className="col s12 m4"></div>
+                    </div>
+                    {this.state.review}
 
 
 
