@@ -16,6 +16,10 @@ export default {
 
     findAllCodes: function () {
         return axios.get("/api/review/code/all")
+    },
+
+    grabCountryCode: function (query) {
+        return axios.get("/api/review/grab/" + query)
     }
 
 
