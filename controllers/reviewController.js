@@ -3,7 +3,7 @@ const db = require("../models")
 module.exports = {
     findByCountryId: function (req, res) {
         db.Review
-            .findById(req.params.id)
+            .find({ countryCode: req.params.id })
             .then(dbReview => res.json(dbReview))
             .catch(err => res.status(422).json(err));
     },
