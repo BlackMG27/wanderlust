@@ -12,6 +12,11 @@ export default {
         //let data = {data: query};
         console.log("data", id);
         return axios.post("/api/review/" + id)
+    },
+
+    findAllCodes: function () {
+        return axios.get("/api/review/code/all")
     }
+
 
 }

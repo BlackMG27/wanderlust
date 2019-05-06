@@ -49,7 +49,6 @@ class ReviewForm extends Component {
         console.log(user.id, this.state.review)
         const query = {
             userId: user.id,
-<<<<<<< HEAD
             review: this.state.review,
             displayName: this.state.displayName,
             img: this.state.img,
@@ -58,10 +57,6 @@ class ReviewForm extends Component {
             dateStart: this.state.dateStart,
             dateEnd: this.state.dateEnd,
             rating: this.state.rating
-=======
-            review: this.state.review
-            // country: this.state.country
->>>>>>> master
         }
         API.createReview(query).then((res) => {
             console.log("res", res)

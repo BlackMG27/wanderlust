@@ -18,6 +18,10 @@ router.route("/list/:id")
 router.route("/grab/:country")
     .get(codeController.countryCodeFind);
 
+// api/review/avatar/:name
+router.route("/avatar/:name")
+    .get(codeController.getGenericAvatar);
+
 // api/review/code/all
 router.route("/code/all")
     .get(reviewController.findAllCodes);
