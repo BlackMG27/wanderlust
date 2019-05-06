@@ -6,7 +6,7 @@ function ReviewListItem(props) {
             <div className="col l2"></div>
             <div className="col l8 s12">
                 <div className="col l4 s12">
-                    <img />
+                    <img src={props.img ? `${props.img}` : `https://ui-avatars.com/api/?name=${props.displayName}`} />
                 </div>
                 <div className="col l8 s12">
                     <h2>{props.displayName}</h2>
