@@ -21,6 +21,10 @@ export default {
     getCountryReviews: function (id) {
         console.log("countrycode:", id);
         return axios.post("/api/reviewlist/" + id)
+    },
+
+    grabCountryCode: function (query) {
+        return axios.get("/api/review/grab/" + query)
     }
 
 
