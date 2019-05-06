@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
 import API from "../utils/API";
 import Moment from 'react-moment';
+import { Rating } from 'semantic-ui-react';
+
 
 class Review extends Component {
     state = {
         id: "",
         country: "",
+        countryCode: "",
         dateEnd: "",
         dateStart: "",
         displayName: "",
         img: "",
         program: "",
         review: ""
+    }
+
+    imgStyle = {
+        height: "200px",
+        width: "200px",
+        borderRadius: "50%"
+    }
+
+    cardStyle = {
+        padding: "2rem"
     }
 
     componentDidMount = () => {
@@ -31,6 +44,7 @@ class Review extends Component {
             this.setState({
                 id: res.data._id,
                 country: res.data.country,
+                countryCode: res.data.countryCode,
                 dateEnd: res.data.dateEnd,
                 dateStart: res.data.dateStart,
                 displayName: res.data.displayName,
@@ -47,18 +61,40 @@ class Review extends Component {
         console.log("state", this.state.id)
         return (
             <div className="container" >
-                <div className="card cyan lighter-5">
-                    <h5>This is the review</h5>
-                    <ul>
-                        <li>Country: {this.state.country}</li>
-                        <li>Rating: {this.state.rating} </li>
-                        <li>Dates Traveled:
-                        <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment> - <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateEnd}</Moment></li>
-                        <li>Program Name: {this.state.program} </li>
-                        <li>Review: {this.state.review}</li>
-                    </ul >
+                <div className="card cyan lighter-5" style={this.cardStyle}>
+                    <div className="row">
+                        <div className="col s12 m4"></div>
+                        <div className="col s12 m4 center-align">
 
-
+                            <img className="center-align" src={this.state.img ? this.state.img : `https://ui-avatars.com/api/?name=${this.state.displayName}`} style={this.imgStyle} alt="photo" />
+                            <h5>{this.state.displayName}</h5>
+                        </div>
+                        <div className="col s12 m4"></div>
+                    </div>
+                    <div className="row">
+                        <div className="col s12 m4"></div>
+                        <div className="col s12 m4 center-align">
+                            <ul>
+                                <li>Program Name: {this.state.program} </li>
+                                <li>Rating:
+                                    <Rating maxRating={5} disabled="true" rating={this.state.rating} /></li>
+                                <li>Dates Traveled:{" "}
+                                    <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment> - <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateEnd}</Moment></li>
+                                <li>Country: {this.state.country}</li>
+                            </ul >
+                        </div>
+                        <div className="col s12 m4"></div>
+                    </div>
+                    <div className="row">
+                        {this.state.review}
+                    </div>
+                    <div className="row">
+                        <a style={{
+                            borderRadius: "3px",
+                            letterSpacing: "1.5px",
+                            marginTop: "1rem"
+                        }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block" href={"/reviewlist/" + this.state.countryCode}>Back to Country</a>
+                    </div>
 
                 </div >
             </div >

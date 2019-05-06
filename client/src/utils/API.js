@@ -19,6 +19,19 @@ export default {
     findAllCodes : function () {
         return axios.get("/api/review/code/all")
     },
+<<<<<<< HEAD
+=======
+
+    getCountryReviews: function (id) {
+        console.log("countrycode:", id);
+        return axios.post("/api/reviewlist/" + id)
+    },
+
+    grabCountryCode: function (query) {
+        return axios.get("/api/review/grab/" + query)
+    }
+
+>>>>>>> master
 
     getCountryReviews : function () {
         console.log('')

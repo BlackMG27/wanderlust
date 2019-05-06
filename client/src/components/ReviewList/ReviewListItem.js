@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 
 function ReviewListItem(props) {
     return (
@@ -6,7 +6,11 @@ function ReviewListItem(props) {
             <div className="col l2"></div>
             <div className="col l8 s12">
                 <div className="col l4 s12">
+<<<<<<< HEAD
                     <img src={props.img} alt="Participant Profile"/>
+=======
+                    <img src={props.img ? props.img : `https://ui-avatars.com/api/?name=${props.displayName}`} />
+>>>>>>> master
                 </div>
                 <div className="col l8 s12">
                     <h2>{props.displayName}</h2>
@@ -21,3 +25,5 @@ function ReviewListItem(props) {
 }
 
 export default ReviewListItem;
+
+

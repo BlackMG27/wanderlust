@@ -11,7 +11,7 @@ router.route("/:id")
     .post(reviewController.findByReviewId);
 
 // api/review/list/:id
-router.route("/list/:id")
+router.route("list/:id")
     .get(reviewController.findByCountryId);
 
 // api/review/grab/:country

@@ -5,6 +5,7 @@ import { logoutUser } from "../actions/authActions";
 import API from "../utils/API";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Rating } from 'semantic-ui-react'
 
 
 class ReviewForm extends Component {
@@ -15,16 +16,21 @@ class ReviewForm extends Component {
         img: "",
         program: "",
         country: "",
+        countryCode: "",
         dateStart: "",
         dateEnd: "",
         rating: ""
     }
+
 
     onChange = e => {
 
         this.setState({ [e.target.id]: e.target.value });
         console.log(this.state.review)
     };
+
+    handleRate = (e, { rating, maxRating }) =>
+        this.setState({ rating, maxRating })
 
 
     onLogoutClick = e => {
@@ -45,23 +51,31 @@ class ReviewForm extends Component {
 
 
     handleFormSubmit = (user) => {
-        /// space////
+        //thanks!
+
         console.log(user.id, this.state.review)
-        const query = {
-            userId: user.id,
-            review: this.state.review,
-            displayName: this.state.displayName,
-            img: this.state.img,
-            program: this.state.program,
-            country: this.state.country,
-            dateStart: this.state.dateStart,
-            dateEnd: this.state.dateEnd,
-            rating: this.state.rating
-        }
-        API.createReview(query).then((res) => {
-            console.log("res", res)
-            window.location.href = "./map"
-        })
+
+        API.grabCountryCode(this.state.country)
+            .then((res) => {
+                const query = {
+                    userId: user.id,
+                    review: this.state.review,
+                    displayName: this.state.displayName,
+                    img: this.state.img,
+                    program: this.state.program,
+                    country: this.state.country,
+                    countryCode: res.data,
+                    dateStart: this.state.dateStart,
+                    dateEnd: this.state.dateEnd,
+                    rating: this.state.rating
+                }
+                API.createReview(query).then((res) => {
+                    console.log("res", res)
+                    window.location.href = "./map"
+                })
+
+            })
+
     }
 
     //userCheck = user
@@ -134,11 +148,11 @@ class ReviewForm extends Component {
 
                 <div className="input-field col s12">
 
-                    <input onChange={this.onChange}
-                        value={this.state.rating}
-                        id="rating"
-                        type="text" />
-                    <label htmlFor="text">How would you rate your experience? </label>
+                    <span className="helper-text" >How would you rate your experience? </span>
+                    <Rating maxRating={5} onRate={this.handleRate} />
+                    <pre>{JSON.stringify()}</pre>
+
+
                 </div>
 
                 <div className="input-field col s12">
@@ -148,7 +162,7 @@ class ReviewForm extends Component {
                         id="review"
                         type="text"
                         className="materialize-textarea"></textarea>
-                    <label for="textarea1">Write a Review of your Trip (1-4 Paragraphs)</label>
+                    <label htmlFor="textarea1">Write a Review of your Trip (1-4 Paragraphs)</label>
 
                 </div>
 
