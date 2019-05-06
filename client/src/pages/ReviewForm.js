@@ -51,7 +51,7 @@ class ReviewForm extends Component {
 
 
     handleFormSubmit = (user) => {
-        /// space////
+        //thanks!
 
         console.log(user.id, this.state.review)
 
