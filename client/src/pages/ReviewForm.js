@@ -5,7 +5,8 @@ import { logoutUser } from "../actions/authActions";
 import API from "../utils/API";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Rating } from 'semantic-ui-react'
+import { Rating } from 'semantic-ui-react';
+// import SimpleReactValidator from 'simple-react-validator';
 
 
 class ReviewForm extends Component {
@@ -38,12 +39,12 @@ class ReviewForm extends Component {
         this.props.logoutUser();
     };
 
-    handleChangeStart = date => {
+    handleChangeStartDate = date => {
         this.setState({
             dateStart: date
         });
     }
-    handleChangeEnd = date => {
+    handleChangeEndDate = date => {
         this.setState({
             dateEnd: date
         });
@@ -52,6 +53,7 @@ class ReviewForm extends Component {
 
     handleFormSubmit = (user) => {
         //thanks!
+
 
         console.log(user.id, this.state.review)
 
@@ -76,9 +78,12 @@ class ReviewForm extends Component {
 
             })
 
+
     }
 
     //userCheck = user
+
+
 
 
 
@@ -128,7 +133,7 @@ class ReviewForm extends Component {
                     <DatePicker
                         selected={this.state.dateStart}
                         value={this.state.dateStart}
-                        onChange={this.handleChangeStart}
+                        onChange={this.handleChangeStartDate}
                         id="dateStart"
                         type="date"
                     />
@@ -139,7 +144,7 @@ class ReviewForm extends Component {
                     <DatePicker
                         selected={this.state.dateEnd}
                         value={this.state.dateEnd}
-                        onChange={this.handleChangeEnd}
+                        onChange={this.handleChangeEndDate}
                         id="dateEnd"
                         type="date"
                     />
@@ -150,7 +155,7 @@ class ReviewForm extends Component {
 
                     <span className="helper-text" >How would you rate your experience? </span>
                     <Rating maxRating={5} onRate={this.handleRate} />
-                    <pre>{JSON.stringify()}</pre>
+                    {/* <pre>{JSON.stringify()}</pre> */}
 
 
                 </div>
