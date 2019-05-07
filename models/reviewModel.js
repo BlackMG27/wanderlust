@@ -39,6 +39,10 @@ const ReviewModel = new Schema({
     },
     userId: {
         type: String
+    },
+    isArchived: {
+        type: Boolean,
+        default: false
     }
 })
 

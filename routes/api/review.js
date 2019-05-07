@@ -15,7 +15,7 @@ router
 // api/review/list/:id
 router
     .route("/list/:id")
-    .post(reviewController.findByCountryId);
+    .get(reviewController.findByCountryId);
 
 // api/review/grab/:country
 router
@@ -31,5 +31,10 @@ router
 router
     .route("/code/all")
     .get(reviewController.findAllCodes);
+
+// api/review/archive/:id
+router
+    .route("/archive/:id")
+    .post(reviewController.archiveReview);
 
 module.exports = router;

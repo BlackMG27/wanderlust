@@ -4,7 +4,7 @@ module.exports = {
     findByCountryId: function (req, res) {
         db
             .Review
-            .find({countryCode: req.params.id})
+            .find({ countryCode: req.params.id, isArchived: false })
             .then(dbReview => res.json(dbReview))
             .catch(err => res.status(422).json(err));
     },
@@ -26,10 +26,10 @@ module.exports = {
                     .findOneAndUpdate({
                         _id: req.body.data.userId
                     }, {
-                        $push: {
-                            review: dbReview._id
-                        }
-                    }, {new: true})
+                            $push: {
+                                review: dbReview._id
+                            }
+                        }, { new: true })
             })
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err))
@@ -42,6 +42,10 @@ module.exports = {
                 "countryCode": 1
             })
             .then(codes => res.json(codes))
-
+    },
+    archiveReview: function (req, res) {
+        db.Review.findByIdAndUpdate(req.params.id, { isArchived: true })
+            .then(dbReview => res.json(dbReview))
+            .catch(err => res.status(422).json(err))
     }
 }
