@@ -77,7 +77,7 @@ class Review extends Component {
                                             ? this.state.img
                                             : `https://ui-avatars.com/api/?name=${this.state.displayName}`}
                                         style={this.imgStyle}
-                                        alt="photo" />
+                                        alt="trip" />
                                     <h5>{this.state.displayName}</h5>
                                 </div>
                                 <div className="col s12 m4"></div>

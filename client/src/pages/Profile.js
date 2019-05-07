@@ -52,7 +52,7 @@ class Profile extends Component {
         console.log("id", user.id)
         return (
             <div className="container" >
-                <div className="card cyan lighter-5" style={this.cardStyle}>
+                <div key="1" className="card cyan lighter-5" style={this.cardStyle}>
                     <div className="row">
                         <h6>Email:</h6> <h5>{this.state.email}</h5>
                     </div>
@@ -70,7 +70,7 @@ class Profile extends Component {
                                     <div className="col s12 m4"></div>
                                     <div className="col s12 m4 center-align">
 
-                                        <img className="center-align" src={currentReview.img ? currentReview.img : `https://ui-avatars.com/api/?name=${currentReview.displayName}`} style={this.imgStyle} alt="photo" />
+                                        <img className="center-align" src={currentReview.img ? currentReview.img : `https://ui-avatars.com/api/?name=${currentReview.displayName}`} style={this.imgStyle} alt="trip" />
                                         <h5>{currentReview.displayName}</h5>
                                     </div>
                                     <div className="col s12 m4"></div>
