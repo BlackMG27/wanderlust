@@ -25,6 +25,14 @@ class Profile extends Component {
         borderRadius: "50%"
     }
 
+    handleDelete = (id) => {
+        API.archiveReview(id).then(res => {
+            console.log(res);
+            window.location.reload();
+        })
+
+    }
+
     componentDidMount() {
         // console.log(this.props.auth.user.id)
         API.getProfile(this.props.auth.user.id).then((res) => {
@@ -47,10 +55,10 @@ class Profile extends Component {
             <div className="container" >
                 <div className="card cyan lighter-5" style={this.cardStyle}>
                     <div className="row">
-                        Email: {this.state.email}
+                        <h5>Email:</h5> {this.state.email}
                     </div>
                     <div className="row">
-                        User Name: {this.state.username}
+                        <h5>User Name:</h5> {this.state.username}
                     </div>
                 </div>
 
@@ -86,11 +94,13 @@ class Profile extends Component {
                                     {currentReview.review}
                                 </div>
                                 <div className="row">
-                                    <a style={{
+                                    <button style={{
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem"
-                                    }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block" href={"/reviewlist/" + currentReview.countryCode}>IDK</a>
+                                    }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
+                                        onClick={() => this.handleDelete(currentReview._id)}
+                                    >Delete</button>
                                 </div>
                             </div>
                         )
