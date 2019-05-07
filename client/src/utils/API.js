@@ -25,6 +25,10 @@ export default {
 
     grabCountryCode: function (query) {
         return axios.get("/api/review/grab/" + query)
+    },
+
+    getProfile: function (id) {
+        return axios.get("/api/users/pop/" + id)
     }
 
 
