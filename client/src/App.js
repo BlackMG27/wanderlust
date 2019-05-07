@@ -35,9 +35,6 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
-  state = {
-    logout: false
-  }
 
   render() {
     return (
