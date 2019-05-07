@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import PrivateRoute from "./private-route/PrivateRoute";
 import Review from "./pages/Review";
 import ReviewList from "./pages/ReviewList";
+import Profile from "./pages/Profile";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -50,7 +51,8 @@ class App extends Component {
             <Route path="/reviewlist/:id" component={ReviewList}/>
             <Route path="/review/:id" component={Review}/>
             <Switch>
-              <PrivateRoute exact path="/reviewform" component={ReviewForm}/>
+              <PrivateRoute exact path="/reviewform" component={ReviewForm} />
+              <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
           </Router>
         </div>
