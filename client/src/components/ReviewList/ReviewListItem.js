@@ -21,7 +21,7 @@ function ReviewListItem(props) {
                         <h5>Organizer: {props.data.tripOrg}</h5>
                         <h5>Rating:
                             <Rating maxRating={5} disabled="true" rating={props.data.rating}/></h5>
-                        <a className="btn" href={`/review/${props.data._id}`}>View Review</a>
+                        <a className="btn review__button" href={`/review/${props.data._id}`}>View Review</a>
                     </div>
                 </div>
             </div>

@@ -61,6 +61,16 @@ body{
   padding: 15px;
 }
 
+.review-list__text .btn{
+  height: 0px;
+  line-height: 0px;
+}
+
+.review__button{
+  padding: 20px 50px;
+  margin-top: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
