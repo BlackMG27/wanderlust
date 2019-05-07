@@ -6,11 +6,12 @@ import API from "../utils/API";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Rating } from 'semantic-ui-react';
-// import SimpleReactValidator from 'simple-react-validator';
+
 
 
 class ReviewForm extends Component {
     state = {
+        formSubmitted: false,
         review: "",
         user: "",
         displayName: "",
@@ -21,6 +22,7 @@ class ReviewForm extends Component {
         dateStart: "",
         dateEnd: "",
         rating: ""
+
     }
 
 
@@ -53,9 +55,21 @@ class ReviewForm extends Component {
 
     handleFormSubmit = (user) => {
         //thanks!
+        this.setState({
+            formSubmitted: true
 
+        })
+
+        //IF ALL FIELDS ARE TRUE
+        //SEND DATA
 
         console.log(user.id, this.state.review)
+
+        //Validation
+        // user.preventDefault();
+
+
+
 
         API.grabCountryCode(this.state.country)
             .then((res) => {
@@ -78,7 +92,6 @@ class ReviewForm extends Component {
 
             })
 
-
     }
 
     //userCheck = user
@@ -94,14 +107,28 @@ class ReviewForm extends Component {
         return (
             <div className="container z-depth-1 cyan lighten-5 row" style={{ padding: "2rem" }} >
                 {/* <form> */}
+
+                {/* displayName */}
+                {/* if displayName is submitted && unfilled we show a message*/}
+
+                {/* else we render normal page */}
                 <div className="input-field col s12">
 
                     <input onChange={this.onChange}
                         value={this.state.displayName}
                         id="displayName"
                         type="text" />
-                    <label htmlFor="text">Name</label>
+                    {this.state.formSubmitted && !this.state.displayName ? (
+                        <label htmlFor="text">Name ***Required to Submit***</label>
+                    ) : (
+                            <label htmlFor="text">Name</label>
+                        )}
+
+
                 </div>
+
+
+
 
                 <div className="input-field col s12">
 
@@ -117,7 +144,23 @@ class ReviewForm extends Component {
                         value={this.state.program}
                         id="program"
                         type="text" />
-                    <label htmlFor="text">Name of Program</label>
+                    {this.state.formSubmitted && !this.state.program ? (
+                        <label htmlFor="text">Name of Program ***Required to Submit***</label>
+                    ) : (
+                            <label htmlFor="text">Name of Program</label>
+                        )}
+                </div>
+                <div className="input-field col s12">
+
+                    <input onChange={this.onChange}
+                        value={this.state.tripOrg}
+                        id="tripOrg"
+                        type="text" />
+                    {this.state.formSubmitted && !this.state.tripOrg ? (
+                        <label htmlFor="text">Who was the trip organizer? ***Required to Submit***</label>
+                    ) : (
+                            <label htmlFor="text">Who was the trip organizer?</label>
+                        )}
                 </div>
                 <div className="input-field col s12">
 
@@ -125,7 +168,12 @@ class ReviewForm extends Component {
                         value={this.state.country}
                         id="country"
                         type="text" />
-                    <label htmlFor="text">What Country Did You Study In? </label>
+
+                    {this.state.formSubmitted && !this.state.country ? (
+                        <label htmlFor="text">What Country Did You Study In? ***Required to Submit***</label>
+                    ) : (
+                            <label htmlFor="text">What Country Did You Study In?</label>
+                        )}
                 </div>
 
                 <div className="input-field col s12">
@@ -137,7 +185,12 @@ class ReviewForm extends Component {
                         id="dateStart"
                         type="date"
                     />
-                    <span className="helper-text" >Start Date</span>
+                    {this.state.formSubmitted && !this.state.dateStart ? (
+                        <span className="helper-text" >Start Date ***Required to Submit***</span>
+
+                    ) : (
+                            <span className="helper-text" >Start Date </span>
+                        )}
                 </div>
                 <div className="input-field col s12">
 
@@ -148,12 +201,18 @@ class ReviewForm extends Component {
                         id="dateEnd"
                         type="date"
                     />
-                    <span className="helper-text" >End Date</span>
+
+                    {this.state.formSubmitted && !this.state.dateEnd ? (
+                        <span className="helper-text" >End Date ***Required to Submit***</span>
+
+                    ) : (
+                            <span className="helper-text" >End Date </span>
+                        )}
                 </div>
 
                 <div className="input-field col s12">
 
-                    <span className="helper-text" >How would you rate your experience? </span>
+                    <span className="helper-text" id="rating" >How would you rate your experience? </span>
                     <Rating maxRating={5} onRate={this.handleRate} />
                     {/* <pre>{JSON.stringify()}</pre> */}
 
@@ -167,7 +226,12 @@ class ReviewForm extends Component {
                         id="review"
                         type="text"
                         className="materialize-textarea"></textarea>
-                    <label htmlFor="textarea1">Write a Review of your Trip (1-4 Paragraphs)</label>
+
+                    {this.state.formSubmitted && !this.state.country ? (
+                        <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs) ***Required to Submit***</label>
+                    ) : (
+                            <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs)</label>
+                        )}
 
                 </div>
 
@@ -191,6 +255,7 @@ class ReviewForm extends Component {
             </div >
         )
 
+
     }
 }
 
@@ -205,11 +270,3 @@ export default connect(
     mapStateToProps,
     { logoutUser }
 )(ReviewForm);
-
-
-
-
-
-
-
-
