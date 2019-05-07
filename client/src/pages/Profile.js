@@ -34,13 +34,12 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        // console.log(this.props.auth.user.id)
         API.getProfile(this.props.auth.user.id).then((res) => {
             console.log("res", res)
             this.setState({
                 email: res.data.email,
                 username: res.data.username,
-                review: res.data.review
+                review: res.data.review.filter(element => !element.isArchived)
             })
         })
     }
@@ -55,10 +54,10 @@ class Profile extends Component {
             <div className="container" >
                 <div className="card cyan lighter-5" style={this.cardStyle}>
                     <div className="row">
-                        <h5>Email:</h5> {this.state.email}
+                        <h6>Email:</h6> <h5>{this.state.email}</h5>
                     </div>
                     <div className="row">
-                        <h5>User Name:</h5> {this.state.username}
+                        <h6>User Name:</h6> <h5>{this.state.username}</h5>
                     </div>
                 </div>
 
@@ -66,7 +65,7 @@ class Profile extends Component {
                 {!this.state.review.length ? (<div className="card cyan lighter-5" style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
                     this.state.review.map((currentReview, id) => {
                         return (
-                            <div className="card cyan lighter-5" style={this.cardStyle}>
+                            <div className="card cyan lighter-5" key={currentReview._id} style={this.cardStyle}>
                                 <div className="row">
                                     <div className="col s12 m4"></div>
                                     <div className="col s12 m4 center-align">
@@ -82,7 +81,7 @@ class Profile extends Component {
                                         <ul>
                                             <li>Program Name: {currentReview.program} </li>
                                             <li>Rating:
-                                    <Rating maxRating={5} disabled="true" rating={currentReview.rating} /></li>
+                                    <Rating maxRating={5} disabled={true} rating={currentReview.rating} /></li>
                                             <li>Dates Traveled:{" "}
                                                 <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{currentReview.dateStart}</Moment> - <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{currentReview.dateEnd}</Moment></li>
                                             <li>Country: {currentReview.country}</li>
