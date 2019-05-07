@@ -3,27 +3,33 @@ const reviewController = require("../../controllers/reviewController");
 const codeController = require("../../controllers/codeController");
 
 //api/review
-router.route("/")
+router
+    .route("/")
     .post(reviewController.create);
 
 // api/review/:id
-router.route("/:id")
+router
+    .route("/:id")
     .post(reviewController.findByReviewId);
 
 // api/review/list/:id
-router.route("/list/:id")
+router
+    .route("/list/:id")
     .post(reviewController.findByCountryId);
 
 // api/review/grab/:country
-router.route("/grab/:country")
+router
+    .route("/grab/:country")
     .get(codeController.countryCodeFind);
 
 // api/review/avatar/:name
-router.route("/avatar/:name")
+router
+    .route("/avatar/:name")
     .get(codeController.getGenericAvatar);
 
 // api/review/code/all
-router.route("/code/all")
+router
+    .route("/code/all")
     .get(reviewController.findAllCodes);
 
 module.exports = router;
