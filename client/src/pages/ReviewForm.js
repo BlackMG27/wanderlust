@@ -87,7 +87,7 @@ class ReviewForm extends Component {
         // console.log("user", user)
         //.setState({ user: user })
         return (
-            <div className="container z-depth-1 cyan lighten-5 row" >
+            <div className="container z-depth-1 cyan lighten-5 row" style={{ padding: "2rem" }} >
                 {/* <form> */}
                 <div className="input-field col s12">
 

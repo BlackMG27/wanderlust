@@ -35,7 +35,7 @@ function NavTabs(props) {
                             className={props.currentPage === "Login"
                                 ? "nav-link active"
                                 : "nav-link"}>
-                            Login / Signup
+                            Login / Profile
 
                         </a>
                     </li>
