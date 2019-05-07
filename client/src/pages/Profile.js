@@ -90,7 +90,7 @@ class Profile extends Component {
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem"
-                                    }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block" href={"/reviewlist/" + currentReview.countryCode}>Delete</a>
+                                    }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block" href={"/reviewlist/" + currentReview.countryCode}>IDK</a>
                                 </div>
                             </div>
                         )
