@@ -2,6 +2,7 @@ body{
   /* text-align: center; */
   /* background-color: black; */
   background-image: url("../src/images/background3.gif");
+  background-size: cover;
   /* background-repeat: no-repeat; */
 
 }
@@ -36,6 +37,28 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   background-color: #fff;
   padding-top: 40px;
+}
+
+.review-list__img{
+  float: left;
+  height: 250px;
+  width: 250px;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 50%;
+  padding-top: 10px;
+}
+
+.review-list__text{
+  float: right;
+}
+
+.review__list__item{
+  clear: both;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  border: 1px solid #282c34;
+  padding: 15px;
 }
 
 @keyframes App-logo-spin {

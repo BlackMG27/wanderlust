@@ -24,13 +24,13 @@ class ReviewList extends Component {
         console.log(this.state);
         return (
             <Fragment>
-                <div className="container">
+                <main className="container">
                     {this
                         .state
                         .reviews
                         .map(((listItem, i) => (<ReviewListItem data ={listItem} key={i}/>)))}
 
-                </div>
+                </main>
             </Fragment>
         )
     }
