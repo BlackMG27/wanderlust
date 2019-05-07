@@ -25,14 +25,21 @@ class Profile extends Component {
         borderRadius: "50%"
     }
 
+    handleDelete = (id) => {
+        API.archiveReview(id).then(res => {
+            console.log(res);
+            window.location.reload();
+        })
+
+    }
+
     componentDidMount() {
-        // console.log(this.props.auth.user.id)
         API.getProfile(this.props.auth.user.id).then((res) => {
             console.log("res", res)
             this.setState({
                 email: res.data.email,
                 username: res.data.username,
-                review: res.data.review
+                review: res.data.review.filter(element => !element.isArchived)
             })
         })
     }
@@ -45,12 +52,12 @@ class Profile extends Component {
         console.log("id", user.id)
         return (
             <div className="container" >
-                <div className="card cyan lighter-5" style={this.cardStyle}>
+                <div key="1" className="card cyan lighter-5" style={this.cardStyle}>
                     <div className="row">
-                        Email: {this.state.email}
+                        <h6>Email:</h6> <h5>{this.state.email}</h5>
                     </div>
                     <div className="row">
-                        User Name: {this.state.username}
+                        <h6>User Name:</h6> <h5>{this.state.username}</h5>
                     </div>
                 </div>
 
@@ -58,12 +65,12 @@ class Profile extends Component {
                 {!this.state.review.length ? (<div className="card cyan lighter-5" style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
                     this.state.review.map((currentReview, id) => {
                         return (
-                            <div className="card cyan lighter-5" style={this.cardStyle}>
+                            <div className="card cyan lighter-5" key={currentReview._id} style={this.cardStyle}>
                                 <div className="row">
                                     <div className="col s12 m4"></div>
                                     <div className="col s12 m4 center-align">
 
-                                        <img className="center-align" src={currentReview.img ? currentReview.img : `https://ui-avatars.com/api/?name=${currentReview.displayName}`} style={this.imgStyle} alt="photo" />
+                                        <img className="center-align" src={currentReview.img ? currentReview.img : `https://ui-avatars.com/api/?name=${currentReview.displayName}`} style={this.imgStyle} alt="trip" />
                                         <h5>{currentReview.displayName}</h5>
                                     </div>
                                     <div className="col s12 m4"></div>
@@ -74,7 +81,7 @@ class Profile extends Component {
                                         <ul>
                                             <li>Program Name: {currentReview.program} </li>
                                             <li>Rating:
-                                    <Rating maxRating={5} disabled="true" rating={currentReview.rating} /></li>
+                                    <Rating maxRating={5} disabled={true} rating={currentReview.rating} /></li>
                                             <li>Dates Traveled:{" "}
                                                 <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{currentReview.dateStart}</Moment> - <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{currentReview.dateEnd}</Moment></li>
                                             <li>Country: {currentReview.country}</li>
@@ -86,11 +93,13 @@ class Profile extends Component {
                                     {currentReview.review}
                                 </div>
                                 <div className="row">
-                                    <a style={{
+                                    <button style={{
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem"
-                                    }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block" href={"/reviewlist/" + currentReview.countryCode}>IDK</a>
+                                    }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
+                                        onClick={() => this.handleDelete(currentReview._id)}
+                                    >Delete</button>
                                 </div>
                             </div>
                         )
