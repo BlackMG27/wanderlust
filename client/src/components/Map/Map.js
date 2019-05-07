@@ -21,8 +21,8 @@ class Map extends React.Component {
         } catch (err) {
             chart.raiseCriticalError({
                 "message": "Map geodata could not be loaded. Please download the latest <a href=\"https://ww" +
-                    "w.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its cont" +
-                    "ents into the same directory as your amCharts files."
+                        "w.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its cont" +
+                        "ents into the same directory as your amCharts files."
             });
         }
         //sets the projection that will be used
@@ -49,22 +49,14 @@ class Map extends React.Component {
         polygonSeries.data = activeCodes.map(codes => ({
             'id': codes,
             'color': am4core.color('#FECF6A'),
-            'link': `/review/list/${codes}`
-        })
+            'link': `/reviewlist/${codes}`
+        }))
 
-        )
-
-        // polygonSeries.data = [
-        //     {
-        //         'id': 'FR',
-        //         'color': am4core.color('#FECF6A'),
-        //         'link': 'https://www.meetup.com/a11ychi/events/261052295/'
-        //     }, {
-        //         'id': 'IT',
-        //         'color': am4core.color('#FECF6A'),
-        //         'link': 'https://htmlcolors.com/hex/fecf6a'
-        //     }
-        // ]
+        // polygonSeries.data = [     {         'id': 'FR',         'color':
+        // am4core.color('#FECF6A'),         'link':
+        // 'https://www.meetup.com/a11ychi/events/261052295/'     }, {         'id':
+        // 'IT',         'color': am4core.color('#FECF6A'),         'link':
+        // 'https://htmlcolors.com/hex/fecf6a'     } ]
 
         const colorSet = new am4core.ColorSet();
 
@@ -126,7 +118,8 @@ class Map extends React.Component {
 
     componentDidMount() {
 
-        API.findAllCodes()
+        API
+            .findAllCodes()
             .then(codesFromDB => this.test(codesFromDB))
         // this.test()
     }
