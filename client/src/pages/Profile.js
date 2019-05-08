@@ -134,7 +134,7 @@ class Profile extends Component {
         const submitImg = this.state.formImg.trim()
         const submitDisplayName = this.state.formDisplayName.trim()
 
-        console.log("review:", submitReview)
+        console.log("review: !!!!!!!!!!!!!!!", submitReview, submitImg, submitDisplayName)
 
         if (this.state.formReviewId !== "") {
             query._id = this.state.formReviewId
@@ -149,18 +149,24 @@ class Profile extends Component {
             query.displayName = submitDisplayName
         }
 
-        API.editReview(query).then((res) => {
-            console.log("res", res.data);
+        console.log('this is what wer are about to save!!!!', query)
 
-        }).then(API.getProfile(this.props.auth.user.id).then((res) => {
-            console.log("res", res)
-            this.setState({
-                email: res.data.email,
-                username: res.data.username,
-                review: res.data.review.filter(element => !element.isArchived),
-                showForm: false
-            })
-        }))
+        if (query.img && query.displayName && query.review) {
+
+            API.editReview(query).then((res) => {
+                console.log("res", res.data);
+
+            }).then(API.getProfile(this.props.auth.user.id).then((res) => {
+                console.log("res", res)
+                this.setState({
+                    email: res.data.email,
+                    username: res.data.username,
+                    review: res.data.review.filter(element => !element.isArchived),
+                    showForm: false
+                })
+            }))
+        }
+
     }
 
     render() {
