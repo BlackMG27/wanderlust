@@ -8,7 +8,14 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wanderlust", { 
 const reviewSeed = [
     {
         displayName: "Stephanie",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dlva-21ddfaf4-e93f-4770-9e06-48351bef1daf.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZGQ2ZGx2YS0yMWRkZmFmNC1lOTNmLTQ3NzAtOWUwNi00ODM1MWJlZjFkYWYuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.2N2tz5YgXGRwQwSSmOzAB6i9MVXk04WwekbaW-ESrDg",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dlva-21ddfaf4-e93f-4770-9e06-48351bef1daf.jpg?token=eyJ0eXAiOi" +
+            "JKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxN" +
+            "WVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsI" +
+            "m9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZ" +
+            "GQ2ZGx2YS0yMWRkZmFmNC1lOTNmLTQ3NzAtOWUwNi00ODM1MWJlZjFkYWYuanBnIn1dXSwiYXVkIjpbI" +
+            "nVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.2N2tz5YgXGRwQwSSmOzAB6i9MVXk04WwekbaW-ESr" +
+            "Dg",
         program: "NUI Study Abroad",
         country: "Ireland",
         countryCode: "IE",
@@ -27,11 +34,19 @@ const reviewSeed = [
             "oors.",
         dateStart: "2005/01/22 00:00",
         dateEnd: "2005/04/05 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Leah",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dlvm-cb6aa42d-5484-400a-936c-3f51ea28b841.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZGQ2ZGx2bS1jYjZhYTQyZC01NDg0LTQwMGEtOTM2Yy0zZjUxZWEyOGI4NDEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.p032qtiwa-DBs0B0XkqP8YAdugsMxJDGUJGyPx8PtaY",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dlvm-cb6aa42d-5484-400a-936c-3f51ea28b841.jpg?token=eyJ0eXAiOi" +
+            "JKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxN" +
+            "WVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsI" +
+            "m9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZ" +
+            "GQ2ZGx2bS1jYjZhYTQyZC01NDg0LTQwMGEtOTM2Yy0zZjUxZWEyOGI4NDEuanBnIn1dXSwiYXVkIjpbI" +
+            "nVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.p032qtiwa-DBs0B0XkqP8YAdugsMxJDGUJGyPx8Pt" +
+            "aY",
         program: "",
         country: "Israel",
         countryCode: "IL",
@@ -48,11 +63,20 @@ const reviewSeed = [
             " comfort zone. If I could’ve I would’ve stayed for another year!",
         dateStart: "2008/05/15 00:00",
         dateEnd: "2009/03/21 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Carlos",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dlwf-61e971f9-07d3-495a-955b-f345356a464f.jpg/v1/fill/w_1192,h_670,q_70,strp/stone_forest_2_by_strontium_chloride_dd6dlwf-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvNTExZWY3YzAtYzFlNS00YzU2LWIxOWMtNTEyZTZhNWY0YjM3XC9kZDZkbHdmLTYxZTk3MWY5LTA3ZDMtNDk1YS05NTViLWYzNDUzNTZhNDY0Zi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.mgX0KC_vgXsuzrVZxLADj0ChxGPj2VmmQdERqbX8P44",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dlwf-61e971f9-07d3-495a-955b-f345356a464f.jpg/v1/fill/w_1192,h" +
+            "_670,q_70,strp/stone_forest_2_by_strontium_chloride_dd6dlwf-pre.jpg?token=eyJ0eX" +
+            "AiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZ" +
+            "DQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlM" +
+            "CIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvNTExZWY3YzAtYzFlNS00YzU2L" +
+            "WIxOWMtNTEyZTZhNWY0YjM3XC9kZDZkbHdmLTYxZTk3MWY5LTA3ZDMtNDk1YS05NTViLWYzNDUzNTZhN" +
+            "DY0Zi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyY" +
+            "XRpb25zIl19.mgX0KC_vgXsuzrVZxLADj0ChxGPj2VmmQdERqbX8P44",
         program: "China: Health, Environment, and Traditional Chinese Medicine",
         country: "China",
         countryCode: "CN",
@@ -68,11 +92,19 @@ const reviewSeed = [
             " at my school!",
         dateStart: "2015/02/15 00:00",
         dateEnd: "2015/05/29 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Savanna",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dlw3-bc542f11-6186-4b4a-8530-8c542caaecbe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZGQ2ZGx3My1iYzU0MmYxMS02MTg2LTRiNGEtODUzMC04YzU0MmNhYWVjYmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.UcGemwpFoYnX09058FT6Fu3x5iRAygPugr9iKoT8gjo",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dlw3-bc542f11-6186-4b4a-8530-8c542caaecbe.jpg?token=eyJ0eXAiOi" +
+            "JKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxN" +
+            "WVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsI" +
+            "m9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZ" +
+            "GQ2ZGx3My1iYzU0MmYxMS02MTg2LTRiNGEtODUzMC04YzU0MmNhYWVjYmUuanBnIn1dXSwiYXVkIjpbI" +
+            "nVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.UcGemwpFoYnX09058FT6Fu3x5iRAygPugr9iKoT8g" +
+            "jo",
         program: "Study Abroad Program through Central St. Martins Graphic Design Program",
         country: "Great Britain",
         countryCode: "GB",
@@ -95,11 +127,20 @@ const reviewSeed = [
             " understand who we are as people.",
         dateStart: "2015/01/07 00:00",
         dateEnd: "2015/04/11 00:00",
-        rating: 4
+        rating: 4,
+        isArchived: false
 
     }, {
         displayName: "Szymon",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dlws-b5766d85-d136-4f70-87f7-107a45cb299f.jpg/v1/fill/w_1057,h_756,q_70,strp/syzmon_profile_by_strontium_chloride_dd6dlws-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTE1IiwicGF0aCI6IlwvZlwvNTExZWY3YzAtYzFlNS00YzU2LWIxOWMtNTEyZTZhNWY0YjM3XC9kZDZkbHdzLWI1NzY2ZDg1LWQxMzYtNGY3MC04N2Y3LTEwN2E0NWNiMjk5Zi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.iapVGlR3LlnszqoT_nCxHGXuixUDzODUlqDzaKIBzhc",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dlws-b5766d85-d136-4f70-87f7-107a45cb299f.jpg/v1/fill/w_1057,h" +
+            "_756,q_70,strp/syzmon_profile_by_strontium_chloride_dd6dlws-pre.jpg?token=eyJ0eX" +
+            "AiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZ" +
+            "DQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlM" +
+            "CIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTE1IiwicGF0aCI6IlwvZlwvNTExZWY3YzAtYzFlNS00YzU2L" +
+            "WIxOWMtNTEyZTZhNWY0YjM3XC9kZDZkbHdzLWI1NzY2ZDg1LWQxMzYtNGY3MC04N2Y3LTEwN2E0NWNiM" +
+            "jk5Zi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyY" +
+            "XRpb25zIl19.iapVGlR3LlnszqoT_nCxHGXuixUDzODUlqDzaKIBzhc",
         program: "DIS Summer",
         country: "Denmark",
         countryCode: "DK",
@@ -119,11 +160,19 @@ const reviewSeed = [
             "d helped me to become a better person. I would recommend this trip.",
         dateStart: "2017/06/11 00:00",
         dateEnd: "2017/07/27 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Brynna",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dlur-5f99354c-1e6f-4a8b-aa04-6c852e45fd1e.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZGQ2ZGx1ci01Zjk5MzU0Yy0xZTZmLTRhOGItYWEwNC02Yzg1MmU0NWZkMWUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-IMzoump-rc90QcibBXZjU3ZMtahymjP92dZaBNVkg0",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dlur-5f99354c-1e6f-4a8b-aa04-6c852e45fd1e.jpg?token=eyJ0eXAiOi" +
+            "JKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxN" +
+            "WVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsI" +
+            "m9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZ" +
+            "GQ2ZGx1ci01Zjk5MzU0Yy0xZTZmLTRhOGItYWEwNC02Yzg1MmU0NWZkMWUuanBnIn1dXSwiYXVkIjpbI" +
+            "nVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-IMzoump-rc90QcibBXZjU3ZMtahymjP92dZaBNVk" +
+            "g0",
         program: "Tokai Cool Japan",
         country: "Japan",
         countryCode: "JP",
@@ -139,11 +188,19 @@ const reviewSeed = [
             " Overall it was a fantastic experience. I would definitely recommend it.",
         dateStart: "2015/07/22 00:00",
         dateEnd: "2015/08/02 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Edith",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dluz-483331f5-b0ac-4c7d-bded-61e430220803.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZGQ2ZGx1ei00ODMzMzFmNS1iMGFjLTRjN2QtYmRlZC02MWU0MzAyMjA4MDMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.JUuP4Y1EJ7uUzRafaYZ44eKc-ezTE83Toq_GJYWmyGU",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dluz-483331f5-b0ac-4c7d-bded-61e430220803.jpg?token=eyJ0eXAiOi" +
+            "JKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxN" +
+            "WVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsI" +
+            "m9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZ" +
+            "GQ2ZGx1ei00ODMzMzFmNS1iMGFjLTRjN2QtYmRlZC02MWU0MzAyMjA4MDMuanBnIn1dXSwiYXVkIjpbI" +
+            "nVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.JUuP4Y1EJ7uUzRafaYZ44eKc-ezTE83Toq_GJYWmy" +
+            "GU",
         program: "Arts & Sciences, Seoul",
         country: "South Korea",
         countryCode: "KR",
@@ -158,11 +215,20 @@ const reviewSeed = [
             "every day here is the same, but in Korea there is always something to do.",
         dateStart: "2015/02/19 00:00",
         dateEnd: "2015/06/21 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Ogechi",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dlvw-d57c9dba-62a8-46b4-bf96-a3eeed7ea73a.jpg/v1/fill/w_1192,h_670,q_70,strp/ogechi_italy_by_strontium_chloride_dd6dlvw-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZGQ2ZGx2dy1kNTdjOWRiYS02MmE4LTQ2YjQtYmY5Ni1hM2VlZWQ3ZWE3M2EuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.n1lbapq2bPaw99_nKABttyG1Od1qwrUHUUgvjacL8VM",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dlvw-d57c9dba-62a8-46b4-bf96-a3eeed7ea73a.jpg/v1/fill/w_1192,h" +
+            "_670,q_70,strp/ogechi_italy_by_strontium_chloride_dd6dlvw-pre.jpg?token=eyJ0eXAi" +
+            "OiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQ" +
+            "xNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCI" +
+            "sIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1" +
+            "iMTljLTUxMmU2YTVmNGIzN1wvZGQ2ZGx2dy1kNTdjOWRiYS02MmE4LTQ2YjQtYmY5Ni1hM2VlZWQ3ZWE" +
+            "3M2EuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF" +
+            "0aW9ucyJdfQ.n1lbapq2bPaw99_nKABttyG1Od1qwrUHUUgvjacL8VM",
         program: "Italian Culture Through the Arts in Sienna ",
         country: "Italy",
         countryCode: "IT",
@@ -179,11 +245,19 @@ const reviewSeed = [
             "ome a storyteller, but it can’t be yours if you don’t try.",
         dateStart: "2015/06/17 00:00",
         dateEnd: "2015/07/25 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Aelieen",
-        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19c-512e6a5f4b37/dd6dlx0-80668d62-bcbc-458c-8a4c-44f6ab8816cf.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZGQ2ZGx4MC04MDY2OGQ2Mi1iY2JjLTQ1OGMtOGE0Yy00NGY2YWI4ODE2Y2YuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.xitVDfdh63fu3Clchl3B889bj7G5j2NyzVU7pUVZhbY",
+        img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/511ef7c0-c1e5-4c56-b19" +
+            "c-512e6a5f4b37/dd6dlx0-80668d62-bcbc-458c-8a4c-44f6ab8816cf.jpg?token=eyJ0eXAiOi" +
+            "JKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxN" +
+            "WVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsI" +
+            "m9iaiI6W1t7InBhdGgiOiJcL2ZcLzUxMWVmN2MwLWMxZTUtNGM1Ni1iMTljLTUxMmU2YTVmNGIzN1wvZ" +
+            "GQ2ZGx4MC04MDY2OGQ2Mi1iY2JjLTQ1OGMtOGE0Yy00NGY2YWI4ODE2Y2YuanBnIn1dXSwiYXVkIjpbI" +
+            "nVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.xitVDfdh63fu3Clchl3B889bj7G5j2NyzVU7pUVZh" +
+            "bY",
         program: "",
         country: "Thailand",
         countryCode: "TH",
@@ -199,7 +273,8 @@ const reviewSeed = [
             "ns. I would definitely recommend this trip.",
         dateStart: "2011/06/21 00:00",
         dateEnd: "2011/07/05 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Michael",
@@ -227,7 +302,8 @@ const reviewSeed = [
             " to grow as human beings.",
         dateStart: "2015/01/14 00:00",
         dateEnd: "2015/04/17 00:00",
-        rating: 5
+        rating: 5,
+        isArchived: false
 
     }, {
         displayName: "Nick",
@@ -244,7 +320,8 @@ const reviewSeed = [
             "g experience that gave you freedom to make the most out of the trip.",
         dateStart: "2006/08/20 00:00",
         dateEnd: "2006/12/10 00:00",
-        rating: 4
+        rating: 4,
+        isArchived: false
 
     }
 ];
@@ -261,9 +338,8 @@ const userSeed = [
 
 // db     .User     .remove({})     .then(() =>
 // db.User.collection.insertMany(userSeed))     .then(data => {
-// console.log(data.result.n + " records inserted!");         process.exit(0)
-// })     .catch(err => {         console.error(err);         process.exit(1)
-// })
+// console.log(data.result.n + " records inserted!");         process.exit(0) })
+//     .catch(err => {         console.error(err);         process.exit(1) })
 
 db
     .Review

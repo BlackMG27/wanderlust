@@ -1,5 +1,5 @@
-import React, {Fragment} from 'react';
-import {Rating} from 'semantic-ui-react';
+import React, { Fragment } from 'react';
+import { Rating } from 'semantic-ui-react';
 
 function ReviewListItem(props) {
     console.log(props.data);
@@ -10,18 +10,31 @@ function ReviewListItem(props) {
                 <div className="col l10 s12 review__list__item">
                     <img
                         className="review-list__img"
-                        src={props.data.img}
-                        alt={props.data.displayName}/>
+                        src={props.data.img
+                            ? props.data.img
+                            : `https://ui-avatars.com/api/?name=${props.data.displayName}&size=350&background=d37e34&color=384269`}
+                        alt={props.data.displayName} />
 
                     <div className="review-list__text">
                         <h2>{props.data.displayName}</h2>
-                        <h5>Country: {props.data.country}</h5>
-                        <h5>Program: {props.data.program}
+                        <h5>
+                            <span className="category">Country:
+                            </span>
+                            &nbsp; {props.data.country}</h5>
+                        <h5>
+                            <span className="category">Program:
+                            </span>
+                            &nbsp; {props.data.program}
                         </h5>
-                        <h5>Organizer: {props.data.tripOrg}</h5>
-                        <h5>Rating:
-                            <Rating maxRating={5} disabled="true" rating={props.data.rating}/></h5>
-                        <a className="btn" href={`/review/${props.data._id}`}>View Review</a>
+                        <h5>
+                            <span className="category">Organizer:
+                            </span>
+                            &nbsp; {props.data.tripOrg}</h5>
+                        <h5>
+                            <span className="category">Rating:</span>
+                            &nbsp;
+                            <Rating maxRating={5} disabled="true" rating={props.data.rating} /></h5>
+                        <a className="btn review__button" href={`/review/${props.data._id}`}>View Review</a>
                     </div>
                 </div>
             </div>

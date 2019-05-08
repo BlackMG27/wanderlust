@@ -110,8 +110,8 @@ class Profile extends Component {
                     marginRight: ".5rem"
                 }}
                     type="submit"
-                    className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
-                    onClick={this.updateReview}> Submit</button>
+                    className="review__button"
+                    onClick={this.updateReview}>SUBMIT</button>
 
                 <span className="red-text">{this.state.error}</span>
             </div>
@@ -184,7 +184,7 @@ class Profile extends Component {
         console.log("id", user.id)
         return (
             <div className="container" >
-                <div key="1" className="card cyan lighten-5" style={this.cardStyle}>
+                <div key="1" className="card " style={this.cardStyle}>
                     <div className="row">
                         <h6>Email:</h6> <h5>{this.state.email}</h5>
                     </div>
@@ -195,11 +195,11 @@ class Profile extends Component {
 
 
                 {/* If there is no data to be shown in the results section, give a message. Otherwise show cards for each book.  */}
-                {!this.state.review.length ? (<div className="card cyan lighten-5" style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
+                {!this.state.review.length ? (<div className="card " style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
                     this.state.review.map((currentReview, id) => {
 
                         return (
-                            <div className="card cyan lighten-5" key={currentReview._id} style={this.cardStyle}>
+                            <div className="card " key={currentReview._id} style={this.cardStyle}>
                                 <div className="row">
                                     <div className="col s12 m4"></div>
                                     <div className="col s12 m4 center-align">
@@ -233,16 +233,16 @@ class Profile extends Component {
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem",
                                         marginRight: ".5rem"
-                                    }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
+                                    }} className="review__button"
                                         onClick={() => this.handleDelete(currentReview._id)}
-                                    >Delete</button>
+                                    >DELETE</button>
                                     <button
                                         style={{
                                             borderRadius: "3px",
                                             letterSpacing: "1.5px",
                                             marginTop: "1rem"
                                         }}
-                                        className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
+                                        className="review__button"
                                         onClick={() => this.handleEdit(currentReview._id, currentReview.program, currentReview.review, currentReview.displayName, currentReview.img)}>EDIT</button>
                                     {this.state.showForm && this.state.formReviewId === currentReview._id ? this.formDisplay() : ''}
                                 </div>
