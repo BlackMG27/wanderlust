@@ -16,7 +16,9 @@ class Profile extends Component {
         showForm: false,
         formReviewId: '',
         formReview: "",
-        formReviewProgram: ""
+        formReviewProgram: "",
+        formDisplayName: "",
+        formImg: ""
 
     }
 
@@ -51,7 +53,14 @@ class Profile extends Component {
 
     handleEdit(reviewId, program) {
         console.log('review id', reviewId);
-        this.setState({ formReviewId: reviewId, showForm: !this.state.showForm, formReviewProgram: program, formReview: "" })
+        this.setState({
+            formReviewId: reviewId,
+            showForm: !this.state.showForm,
+            formReviewProgram: program,
+            formReview: "",
+            formDisplayName: "",
+            formImg: ""
+        })
     }
 
     onChange = e => {
@@ -66,6 +75,22 @@ class Profile extends Component {
                 <h6> Edit your review for <a target="_blank" rel="noopener noreferrer" href={`/review/${this.state.formReviewId}`}>{this.state.formReviewProgram}</a></h6>
                 <div className="input-field col s12">
 
+                    <input onChange={this.onChange}
+                        value={this.state.formDisplayName}
+                        id="formDisplayName"
+                        type="text" />
+                    <label htmlFor="text">Name</label>
+                </div>
+                <div className="input-field col s12">
+
+                    <input onChange={this.onChange}
+                        value={this.state.formImg}
+                        id="formImg"
+                        type="text" />
+                    <label htmlFor="text">Image URL</label>
+                </div>
+
+                <div className="input-field col s12">
                     <textarea onChange={this.onChange}
                         value={this.state.formReview}
                         id="formReview"
@@ -75,7 +100,14 @@ class Profile extends Component {
                     <span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs)</span>
 
                 </div>
-                <button onClick={this.updateReview}> Submit</button>
+                <button style={{
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                    marginRight: ".5rem"
+                }}
+                    className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
+                    onClick={this.updateReview}> Submit</button>
             </div>
         )
     }
@@ -83,10 +115,22 @@ class Profile extends Component {
 
     updateReview = () => {
         console.log('GO do axios call and smack the route!!', this.state.formReviewId)
+
         const query = {
             _id: this.state.formReviewId,
-            review: this.state.formReview
+            review: this.state.formReview,
+            img: this.state.formImg,
+            displayName: this.state.formDisplayName
         }
+
+        // validation
+        // if (this.state.formReviewId.trim() !== "") {
+        //     query._id = this.state.formReviewId
+        // }
+        // if (this.state.formReview.trim() !== "") {
+        //     query.review = this.state.formReview
+        // }
+
         API.editReview(query).then((res) => {
             console.log("res", res);
             window.location.reload();
