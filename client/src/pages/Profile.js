@@ -18,7 +18,8 @@ class Profile extends Component {
         formReview: "",
         formReviewProgram: "",
         formDisplayName: "",
-        formImg: ""
+        formImg: "",
+        error: ""
     }
 
     cardStyle = {
@@ -50,15 +51,15 @@ class Profile extends Component {
         })
     }
 
-    handleEdit(reviewId, program) {
+    handleEdit(reviewId, program, content, name, img) {
         console.log('review id', reviewId);
         this.setState({
             formReviewId: reviewId,
             showForm: !this.state.showForm,
             formReviewProgram: program,
-            formReview: "",
-            formDisplayName: "",
-            formImg: ""
+            formReview: content,
+            formDisplayName: name,
+            formImg: img
         })
     }
 
@@ -70,23 +71,26 @@ class Profile extends Component {
     formDisplay = () => {
 
         return (
-            <div>
+            <div className="row">
+                <br />
                 <h6> Edit your review for <a target="_blank" rel="noopener noreferrer" href={`/review/${this.state.formReviewId}`}>{this.state.formReviewProgram}</a></h6>
                 <div className="input-field col s12">
 
                     <input onChange={this.onChange}
+                        //error={this.state.error.name}
                         value={this.state.formDisplayName}
                         id="formDisplayName"
                         type="text" />
-                    <label htmlFor="text">Name</label>
+                    <span className="helper-text">Displayed User Name ***Required to Submit***</span>
+
                 </div>
                 <div className="input-field col s12">
 
                     <input onChange={this.onChange}
-                        value={this.state.formImg}
+                        value={this.state.formImg.includes("https://ui-avatars.com") ? (this.setState({ formImg: "" }), this.state.formImg) : this.state.formImg}
                         id="formImg"
                         type="text" />
-                    <label htmlFor="text">Image URL</label>
+                    <span className="helper-text">Review Image URL</span>
                 </div>
 
                 <div className="input-field col s12">
@@ -96,7 +100,7 @@ class Profile extends Component {
                         type="text"
                         className="materialize-textarea"></textarea>
                     {/* <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs)</label> */}
-                    <span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs)</span>
+                    <span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs) ***Required to Submit*** </span>
 
                 </div>
                 <button style={{
@@ -108,14 +112,14 @@ class Profile extends Component {
                     type="submit"
                     className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
                     onClick={this.updateReview}> Submit</button>
+
+                <span className="red-text">{this.state.error}</span>
             </div>
         )
     }
 
 
     updateReview = (e) => {
-        // console.log('GO do axios call and smack the route!!', this.state.formReviewId)
-        console.log(e)
         e.preventDefault()
         const query = {
             // _id: this.state.formReviewId,
@@ -124,15 +128,11 @@ class Profile extends Component {
             // displayName: this.state.formDisplayName
         }
 
-        // validation
-        // const { formReviewId, formReview, formImg, formDisplayName } = this.state;
-        // formReview = formReview.trim();
-        // formImg = formImg.trim();
-        // formDisplayName = formDisplayName.trim();
 
-        const submitReview = this.state.formReview
-        const submitImg = this.state.formImg.trim()
-        const submitDisplayName = this.state.formDisplayName.trim()
+
+        let submitReview = this.state.formReview
+        let submitImg = this.state.formImg.trim()
+        let submitDisplayName = this.state.formDisplayName.trim()
 
         console.log("review: !!!!!!!!!!!!!!!", submitReview, submitImg, submitDisplayName)
 
@@ -142,12 +142,18 @@ class Profile extends Component {
         if (submitReview !== null && submitReview !== undefined && submitReview !== "") {
             query.review = submitReview
         }
-        if (submitImg !== "") {
-            query.img = submitImg
-        }
         if (submitDisplayName !== "") {
             query.displayName = submitDisplayName
         }
+
+        if (submitImg === "") {
+            submitImg = `https://ui-avatars.com/api/?name=${submitDisplayName}`
+        }
+
+
+        query.img = submitImg
+
+
 
         console.log('this is what wer are about to save!!!!', query)
 
@@ -157,7 +163,6 @@ class Profile extends Component {
                 console.log("res", res.data);
 
             }).then(API.getProfile(this.props.auth.user.id).then((res) => {
-                console.log("res", res)
                 this.setState({
                     email: res.data.email,
                     username: res.data.username,
@@ -165,6 +170,10 @@ class Profile extends Component {
                     showForm: false
                 })
             }))
+        } else {
+            this.setState({
+                error: "Make sure Display Name & Review content are not blank"
+            })
         }
 
     }
@@ -205,6 +214,7 @@ class Profile extends Component {
                                     <div className="col s12 m4 center-align">
                                         <ul>
                                             <li>Program Name: {currentReview.program} </li>
+                                            <li>Organizer: {currentReview.tripOrg} </li>
                                             <li>Rating:
                                     <Rating maxRating={5} disabled={true} rating={currentReview.rating} /></li>
                                             <li>Dates Traveled:{" "}
@@ -233,7 +243,7 @@ class Profile extends Component {
                                             marginTop: "1rem"
                                         }}
                                         className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
-                                        onClick={() => this.handleEdit(currentReview._id, currentReview.program)}>EDIT</button>
+                                        onClick={() => this.handleEdit(currentReview._id, currentReview.program, currentReview.review, currentReview.displayName, currentReview.img)}>EDIT</button>
                                     {this.state.showForm && this.state.formReviewId === currentReview._id ? this.formDisplay() : ''}
                                 </div>
                             </div>
