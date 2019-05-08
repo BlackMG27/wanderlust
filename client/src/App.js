@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import {setCurrentUser, logoutUser} from "./actions/authActions";
-import {Provider} from "react-redux";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+import { Provider } from "react-redux";
 import store from "./store";
 import ReviewForm from "./pages/ReviewForm";
 import NavTabs from './components/Navbar/Navbar';
@@ -15,6 +15,7 @@ import PrivateRoute from "./private-route/PrivateRoute";
 import Review from "./pages/Review";
 import ReviewList from "./pages/ReviewList";
 import Profile from "./pages/Profile";
+// import Sidebar from './components/Sidenav/Sidenav';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -43,13 +44,13 @@ class App extends Component {
 
         <div className="App">
           <Router>
-            <NavTabs logout={logoutUser()}/>
+            <NavTabs logout={logoutUser()} />
             <h1 className="text-align: center">Welcome to Wanderlust!</h1>
-            <Route exact path="/register" component={Register}/>
-            <Route exact path="/login" component={Login}/>
-            <Route exact path="/map" component={Maps}/>
-            <Route path="/reviewlist/:id" component={ReviewList}/>
-            <Route path="/review/:id" component={Review}/>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/map" component={Maps} />
+            <Route path="/reviewlist/:id" component={ReviewList} />
+            <Route path="/review/:id" component={Review} />
             <Switch>
               <PrivateRoute exact path="/reviewform" component={ReviewForm} />
               <PrivateRoute exact path="/profile" component={Profile} />

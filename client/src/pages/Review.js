@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import API from "../utils/API";
 import Moment from 'react-moment';
-import {Rating} from 'semantic-ui-react';
+import { Rating } from 'semantic-ui-react';
 
 class Review extends Component {
     state = {
@@ -67,10 +67,10 @@ class Review extends Component {
                             <img
                                 className="center-align review__img"
                                 src={this.state.img
-                                ? this.state.img
-                                : `https://ui-avatars.com/api/?name=${this.state.displayName}`}
+                                    ? this.state.img
+                                    : `https://ui-avatars.com/api/?name=${this.state.displayName}`}
                                 style={this.imgStyle}
-                                alt={this.state.displayName}/>
+                                alt={this.state.displayName} />
                             <h2 className="review__title">{this.state.displayName}</h2>
                         </div>
                         <div className="col s12 m4"></div>
@@ -82,7 +82,7 @@ class Review extends Component {
                                 <li className="review__category">Program Name: {this.state.program}
                                 </li>
                                 <li className="review__category">Rating:
-                                    <Rating maxRating={5} disabled="true" rating={this.state.rating}/></li>
+                                    <Rating maxRating={5} disabled="true" rating={this.state.rating} /></li>
                                 <li className="review__category">Dates Traveled:{" "}
                                     <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment>
                                     -
