@@ -3,7 +3,7 @@ const db = require("../models");
 
 // This file empties the Books collection and inserts the books below
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://oike27:oike27@ds225375.mlab.com:25375/heroku_9qc5cn9x", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wanderlust", {useNewUrlParser: true});
 
 const reviewSeed = [
     {
