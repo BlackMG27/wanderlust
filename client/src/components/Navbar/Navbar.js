@@ -1,9 +1,5 @@
 import React from "react";
-// import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
-// import '../Navbar/Navbar.css'
-// import { logoutUser } from "../../actions/authActions";
-
-//console.log("log", logoutUser)
+import Logo from "../../img/logonav.png"
 
 
 function NavTabs(props) {
@@ -12,11 +8,11 @@ function NavTabs(props) {
 
     return (
 
-        <nav className="black toolbar">
+        <nav className="toolbar recolor-bar">
             <div className="nav-wrapper toolbar__navigation">
                 <div>
                 </div>
-                <a href="/" className="brand-logo toolbar__logo">Wanderlust</a>
+                <a href="/" className="brand-logo toolbar__logo"><img className="logo-smaller" src={Logo} /></a>
                 <ul className="right hide-on-med-and-down">
                     <li className="nav-item">
                         <a
