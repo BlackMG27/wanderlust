@@ -3,7 +3,8 @@ import React, {Fragment} from 'react';
 function LandingPage() {
     return (
         <Fragment>
-            <h1>Welcome to Wanderlust!</h1>
+            <div className="body-splash"></div>
+
         </Fragment>
     )
 }
