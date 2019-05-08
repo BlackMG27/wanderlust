@@ -70,7 +70,7 @@ class NavTabs extends React.Component {
 
                 <div className="nav-wrapper toolbar__navigation">
                     <div></div>
-                    <a href="/" className="brand-logo toolbar__logo">Wanderlust</a>
+                    <a href="/" className="brand-logo toolbar__logo "><img className="logo__smaller" src={Logo}/></a>
                     <ul className="right hide-on-med-and-down">
                         <li className="nav-item">
                             <a
