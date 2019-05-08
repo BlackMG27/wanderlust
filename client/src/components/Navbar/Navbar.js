@@ -1,22 +1,39 @@
 import React from "react";
-import Logo from './../../img/nav_logo.png';
 
-function NavTabs(props) {
+import Logo from "../../img/logonav.png"
 
-    console.log("props", props)
+import "../Navbar/Navbar.css"
 
-    return (
+// import DrawerToggleButton from '../SideDrawer/DrawerToggleButton'; import
+// '../Navbar/Navbar.css' import { logoutUser } from
+// "../../actions/authActions"; console.log("log", logoutUser) function
+// NavTabs(props) {
+class NavTabs extends React.Component {
+    burgerClick = () => {
+        console.log(document.getElementById('slide-out'))
+    }
 
-        <nav className="black toolbar">
-            <div className="nav-wrapper toolbar__navigation">
-                <div></div>
-                <a href="/" className="brand-logo toolbar__logo"><Logo/></a>
-                <ul className="right hide-on-med-and-down">
+    // console.log("props", props)
+
+    render() {
+        return (
+
+            <nav className="black toolbar">
+
+                <a
+                    href="#sidenav"
+                    onClick={() => this.burgerClick()}
+                    data-target="slide-out"
+                    className="sidenav-trigger show-on-large custom">
+                    <i className="material-icons">menu</i>
+                </a>
+
+                <ul className="sidenav" id="slide-out">
                     <li className="nav-item">
                         <a
                             href="/reviewform"
-                            onClick={() => props.handlePageChange("Review")}
-                            className={props.currentPage === "Review"
+                            onClick={() => this.props.handlePageChange("Review")}
+                            className={this.props.currentPage === "Review"
                             ? "nav-link active"
                             : "nav-link"}>
                             Review
@@ -25,39 +42,79 @@ function NavTabs(props) {
                     <li className="nav-item">
                         <a
                             href="/login"
-                            onClick={() => props.handlePageChange("Login")}
-                            className={props.currentPage === "Login"
+                            onClick={() => this.props.handlePageChange("Login")}
+                            className={this.props.currentPage === "Login"
                             ? "nav-link active"
                             : "nav-link"}>
                             Login / Profile
 
                         </a>
                     </li>
-                    {/* <li className="nav-item">
-                        <a href="/signup" onClick={() => props.handlePageChange("Signup")}
-                            className={props.currentPage === "Signup" ? "nav-link active" : "nav-link"} >
-                            Signup
-                </a>
-                    </li> */}
+
                     <li className="nav-item">
                         <a
                             href="/map"
                             onClick=
-                            {() => props.handlePageChange("Map")}
+                            {() => this.props.handlePageChange("Map")}
                             className=
-                            {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
+                            {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
                     </li>
-                    <li className="nav-item" onClick={props.logout}>
+                    <li className="nav-item" onClick={this.props.logout}>
                         <a
                             href="/"
                             className=
-                            {props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
+                            {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
                     </li>
-                </ul>
-            </div>
-        </nav>
 
-    );
-}
+                </ul>
+
+                <div className="nav-wrapper toolbar__navigation">
+                    <div></div>
+                    <a href="/" className="brand-logo toolbar__logo">Wanderlust</a>
+                    <ul className="right hide-on-med-and-down">
+                        <li className="nav-item">
+                            <a
+                                href="/reviewform"
+                                onClick={() => this.props.handlePageChange("Review")}
+                                className={this.props.currentPage === "Review"
+                                ? "nav-link active"
+                                : "nav-link"}>
+                                Review
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a
+                                href="/login"
+                                onClick={() => this.props.handlePageChange("Login")}
+                                className={this.props.currentPage === "Login"
+                                ? "nav-link active"
+                                : "nav-link"}>
+                                Login / Profile
+
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a
+                                href="/map"
+                                onClick=
+                                {() => this.props.handlePageChange("Map")}
+                                className=
+                                {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
+                        </li>
+                        <li className="nav-item" onClick={this.props.logout}>
+                            <a
+                                href="/"
+                                className=
+                                {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+
+        );
+
+    }
+};
 
 export default NavTabs;
