@@ -37,4 +37,9 @@ router
     .route("/archive/:id")
     .post(reviewController.archiveReview);
 
+// api/review/edit
+router
+    .route("/edit")
+    .put(reviewController.editReview)
+
 module.exports = router;

@@ -128,7 +128,7 @@ margin-top: 20px;
 
 .input-field .helper-text,
 .input-field label,
-.input-field input{
+.input-field input, textarea{
   color: #fff;
 }
 

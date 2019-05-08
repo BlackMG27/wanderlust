@@ -12,7 +12,14 @@ class Profile extends Component {
     state = {
         email: "",
         review: [],
-        username: ""
+        username: "",
+        showForm: false,
+        formReviewId: '',
+        formReview: "",
+        formReviewProgram: "",
+        formDisplayName: "",
+        formImg: "",
+        error: ""
     }
 
     cardStyle = {
@@ -27,9 +34,15 @@ class Profile extends Component {
 
     handleDelete = (id) => {
         API.archiveReview(id).then(res => {
-            console.log(res);
-            window.location.reload();
-        })
+            // console.log(res)
+        }).then(API.getProfile(this.props.auth.user.id).then((res) => {
+            console.log("res", res)
+            this.setState({
+                email: res.data.email,
+                username: res.data.username,
+                review: res.data.review.filter(element => !element.isArchived)
+            })
+        }))
 
     }
 
@@ -44,7 +57,118 @@ class Profile extends Component {
         })
     }
 
+    handleEdit(reviewId, program, content, name, img) {
+        console.log('review id', reviewId);
+        this.setState({
+            formReviewId: reviewId,
+            showForm: !this.state.showForm,
+            formReviewProgram: program,
+            formReview: content,
+            formDisplayName: name,
+            formImg: img
+        })
+    }
 
+    onChange = e => {
+        this.setState({ [e.target.id]: e.target.value });
+        console.log(this.state)
+    };
+
+    formDisplay = () => {
+
+        return (
+            <div className="row">
+                <br />
+                <h6> Edit your review for <a target="_blank" rel="noopener noreferrer" href={`/review/${this.state.formReviewId}`}>{this.state.formReviewProgram}</a></h6>
+                <div className="input-field col s12">
+
+                    <input onChange={this.onChange}
+                        value={this.state.formDisplayName}
+                        id="formDisplayName"
+                        type="text" />
+                    <span className="helper-text">Displayed User Name ***Required to Submit***</span>
+
+                </div>
+                <div className="input-field col s12">
+
+                    <input onChange={this.onChange}
+                        value={this.state.formImg.includes("https://ui-avatars.com") ? (this.setState({ formImg: "" }), this.state.formImg) : this.state.formImg}
+                        id="formImg"
+                        type="text" />
+                    <span className="helper-text">Review Image URL</span>
+                </div>
+
+                <div className="input-field col s12">
+                    <textarea onChange={this.onChange}
+                        value={this.state.formReview}
+                        id="formReview"
+                        type="text"
+                        className="materialize-textarea"></textarea>
+                    <span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs) ***Required to Submit*** </span>
+
+                </div>
+                <button style={{
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                    marginRight: ".5rem"
+                }}
+                    type="submit"
+                    className="review__button"
+                    onClick={this.updateReview}>SUBMIT</button>
+
+                <span className="red-text">{this.state.error}</span>
+            </div>
+        )
+    }
+
+
+    updateReview = (e) => {
+        e.preventDefault()
+        const query = {
+
+        }
+
+        let submitReview = this.state.formReview
+        let submitImg = this.state.formImg.trim()
+        let submitDisplayName = this.state.formDisplayName.trim()
+
+
+        if (this.state.formReviewId !== "") {
+            query._id = this.state.formReviewId
+        }
+        if (submitReview !== null && submitReview !== undefined && submitReview !== "") {
+            query.review = submitReview
+        }
+        if (submitDisplayName !== "") {
+            query.displayName = submitDisplayName
+        }
+
+        if (submitImg === "") {
+            submitImg = `https://ui-avatars.com/api/?name=${submitDisplayName}`
+        }
+
+        query.img = submitImg
+
+        if (query.img && query.displayName && query.review) {
+
+            API.editReview(query).then((res) => {
+
+            }).then(API.getProfile(this.props.auth.user.id).then((res) => {
+                this.setState({
+                    email: res.data.email,
+                    username: res.data.username,
+                    review: res.data.review.filter(element => !element.isArchived),
+                    showForm: false
+                })
+            }))
+        } else {
+            this.setState({
+                error: "Make sure Display Name & Review content are not blank"
+            })
+        }
+
+    }
 
     render() {
 
@@ -52,7 +176,7 @@ class Profile extends Component {
         console.log("id", user.id)
         return (
             <div className="container" >
-                <div key="1" className="card cyan lighter-5" style={this.cardStyle}>
+                <div key="1" className="card " style={this.cardStyle}>
                     <div className="row">
                         <h6>Email:</h6> <h5>{this.state.email}</h5>
                     </div>
@@ -61,11 +185,13 @@ class Profile extends Component {
                     </div>
                 </div>
 
+
                 {/* If there is no data to be shown in the results section, give a message. Otherwise show cards for each book.  */}
-                {!this.state.review.length ? (<div className="card cyan lighter-5" style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
+                {!this.state.review.length ? (<div className="card " style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
                     this.state.review.map((currentReview, id) => {
+
                         return (
-                            <div className="card cyan lighter-5" key={currentReview._id} style={this.cardStyle}>
+                            <div className="card " key={currentReview._id} style={this.cardStyle}>
                                 <div className="row">
                                     <div className="col s12 m4"></div>
                                     <div className="col s12 m4 center-align">
@@ -80,6 +206,7 @@ class Profile extends Component {
                                     <div className="col s12 m4 center-align">
                                         <ul>
                                             <li>Program Name: {currentReview.program} </li>
+                                            <li>Organizer: {currentReview.tripOrg} </li>
                                             <li>Rating:
                                     <Rating maxRating={5} disabled={true} rating={currentReview.rating} /></li>
                                             <li>Dates Traveled:{" "}
@@ -96,10 +223,20 @@ class Profile extends Component {
                                     <button style={{
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "1rem"
-                                    }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
+                                        marginTop: "1rem",
+                                        marginRight: ".5rem"
+                                    }} className="review__button"
                                         onClick={() => this.handleDelete(currentReview._id)}
-                                    >Delete</button>
+                                    >DELETE</button>
+                                    <button
+                                        style={{
+                                            borderRadius: "3px",
+                                            letterSpacing: "1.5px",
+                                            marginTop: "1rem"
+                                        }}
+                                        className="review__button"
+                                        onClick={() => this.handleEdit(currentReview._id, currentReview.program, currentReview.review, currentReview.displayName, currentReview.img)}>EDIT</button>
+                                    {this.state.showForm && this.state.formReviewId === currentReview._id ? this.formDisplay() : ''}
                                 </div>
                             </div>
                         )

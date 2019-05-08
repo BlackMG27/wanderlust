@@ -49,7 +49,8 @@ class Review extends Component {
                     program: res.data.program,
                     review: res.data.review,
                     rating: res.data.rating,
-                    isArchived: res.data.isArchived
+                    isArchived: res.data.isArchived,
+                    tripOrg: res.data.tripOrg
                 })
             })
 
@@ -80,6 +81,8 @@ class Review extends Component {
                         <div className="col s12 m8 center-align">
                             <ul>
                                 <li className="review__category">Program Name: {this.state.program}
+                                </li>
+                                <li className="review__category">Organizer: {this.state.tripOrg}
                                 </li>
                                 <li className="review__category">Rating:
                                     <Rating maxRating={5} disabled="true" rating={this.state.rating} /></li>

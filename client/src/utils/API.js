@@ -34,5 +34,12 @@ export default {
     },
     archiveReview: function (id) {
         return axios.post("/api/review/archive/" + id)
+    },
+    editReview: function (query) {
+        // let data = {
+        //     data: query
+        // };
+        // console.log("data", data);
+        return axios.put("/api/review/edit", query);
     }
 }
