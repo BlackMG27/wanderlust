@@ -21,7 +21,8 @@ class ReviewForm extends Component {
         countryCode: "",
         dateStart: "",
         dateEnd: "",
-        rating: ""
+        rating: "",
+        tripOrg: ""
 
     }
 
@@ -83,7 +84,8 @@ class ReviewForm extends Component {
                     countryCode: res.data,
                     dateStart: this.state.dateStart,
                     dateEnd: this.state.dateEnd,
-                    rating: this.state.rating
+                    rating: this.state.rating,
+                    tripOrg: this.state.tripOrg
                 }
                 API.createReview(query).then((res) => {
                     console.log("res", res)
