@@ -19,7 +19,6 @@ class Profile extends Component {
         formReviewProgram: "",
         formDisplayName: "",
         formImg: ""
-
     }
 
     cardStyle = {
@@ -106,6 +105,7 @@ class Profile extends Component {
                     marginTop: "1rem",
                     marginRight: ".5rem"
                 }}
+                    type="submit"
                     className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
                     onClick={this.updateReview}> Submit</button>
             </div>
@@ -113,28 +113,54 @@ class Profile extends Component {
     }
 
 
-    updateReview = () => {
-        console.log('GO do axios call and smack the route!!', this.state.formReviewId)
-
+    updateReview = (e) => {
+        // console.log('GO do axios call and smack the route!!', this.state.formReviewId)
+        console.log(e)
+        e.preventDefault()
         const query = {
-            _id: this.state.formReviewId,
-            review: this.state.formReview,
-            img: this.state.formImg,
-            displayName: this.state.formDisplayName
+            // _id: this.state.formReviewId,
+            // review: this.state.formReview,
+            // img: this.state.formImg,
+            // displayName: this.state.formDisplayName
         }
 
         // validation
-        // if (this.state.formReviewId.trim() !== "") {
-        //     query._id = this.state.formReviewId
-        // }
-        // if (this.state.formReview.trim() !== "") {
-        //     query.review = this.state.formReview
-        // }
+        // const { formReviewId, formReview, formImg, formDisplayName } = this.state;
+        // formReview = formReview.trim();
+        // formImg = formImg.trim();
+        // formDisplayName = formDisplayName.trim();
+
+        const submitReview = this.state.formReview
+        const submitImg = this.state.formImg.trim()
+        const submitDisplayName = this.state.formDisplayName.trim()
+
+        console.log("review:", submitReview)
+
+        if (this.state.formReviewId !== "") {
+            query._id = this.state.formReviewId
+        }
+        if (submitReview !== null && submitReview !== undefined && submitReview !== "") {
+            query.review = submitReview
+        }
+        if (submitImg !== "") {
+            query.img = submitImg
+        }
+        if (submitDisplayName !== "") {
+            query.displayName = submitDisplayName
+        }
 
         API.editReview(query).then((res) => {
-            console.log("res", res);
-            window.location.reload();
-        })
+            console.log("res", res.data);
+
+        }).then(API.getProfile(this.props.auth.user.id).then((res) => {
+            console.log("res", res)
+            this.setState({
+                email: res.data.email,
+                username: res.data.username,
+                review: res.data.review.filter(element => !element.isArchived),
+                showForm: false
+            })
+        }))
     }
 
     render() {
@@ -156,6 +182,7 @@ class Profile extends Component {
                 {/* If there is no data to be shown in the results section, give a message. Otherwise show cards for each book.  */}
                 {!this.state.review.length ? (<div className="card cyan lighten-5" style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
                     this.state.review.map((currentReview, id) => {
+
                         return (
                             <div className="card cyan lighten-5" key={currentReview._id} style={this.cardStyle}>
                                 <div className="row">
@@ -201,7 +228,7 @@ class Profile extends Component {
                                         }}
                                         className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
                                         onClick={() => this.handleEdit(currentReview._id, currentReview.program)}>EDIT</button>
-                                    {this.state.showForm ? this.formDisplay() : ''}
+                                    {this.state.showForm && this.formReviewId === currentReview._id ? this.formDisplay() : ''}
                                 </div>
                             </div>
                         )
