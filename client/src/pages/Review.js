@@ -68,7 +68,7 @@ class Review extends Component {
                                 className="center-align review__img"
                                 src={this.state.img
                                     ? this.state.img
-                                    : `https://ui-avatars.com/api/?name=${this.state.displayName}`}
+                                    : `https://ui-avatars.com/api/?name=${this.state.displayName}&size=350&background=d37e34&color=384269`}
                                 style={this.imgStyle}
                                 alt={this.state.displayName} />
                             <h2 className="review__title">{this.state.displayName}</h2>

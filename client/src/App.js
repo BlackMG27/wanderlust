@@ -15,7 +15,7 @@ import PrivateRoute from "./private-route/PrivateRoute";
 import Review from "./pages/Review";
 import ReviewList from "./pages/ReviewList";
 import Profile from "./pages/Profile";
-// import Sidebar from './components/Sidenav/Sidenav';
+import LandingPage from './pages/LandingPage';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -44,16 +44,16 @@ class App extends Component {
 
         <div className="App">
           <Router>
-            <NavTabs logout={logoutUser()} />
-            <h1 className="text-align: center">Welcome to Wanderlust!</h1>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/map" component={Maps} />
-            <Route path="/reviewlist/:id" component={ReviewList} />
-            <Route path="/review/:id" component={Review} />
+            <NavTabs logout={logoutUser()}/>
+            <Route exact path="/register" component={Register}/>
+            <Route exact path="/" component={LandingPage}/>
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/map" component={Maps}/>
+            <Route path="/reviewlist/:id" component={ReviewList}/>
+            <Route path="/review/:id" component={Review}/>
             <Switch>
-              <PrivateRoute exact path="/reviewform" component={ReviewForm} />
-              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/reviewform" component={ReviewForm}/>
+              <PrivateRoute exact path="/profile" component={Profile}/>
             </Switch>
           </Router>
         </div>
