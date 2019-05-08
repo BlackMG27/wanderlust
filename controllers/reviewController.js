@@ -47,5 +47,11 @@ module.exports = {
         db.Review.findByIdAndUpdate(req.params.id, { isArchived: true })
             .then(dbReview => res.json(dbReview))
             .catch(err => res.status(422).json(err))
+    },
+    editReview: function (req, res) {
+        console.log(req.body)
+        db.Review.findByIdAndUpdate(req.body._id, { review: req.body.review })
+            .then(dbReview => res.json(dbReview))
+            .catch(err => res.status(422).json(err))
     }
 }
