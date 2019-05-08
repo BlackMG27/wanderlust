@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600|Pacifico');
+
 body{
   /* text-align: center; */
   /* background-color: black; */
@@ -6,9 +8,6 @@ body{
   /* background-repeat: no-repeat; */
 
 }
-/* .App {
-  
-} */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -39,18 +38,23 @@ body{
   padding-top: 40px;
 }
 
+.review__img,
 .review-list__img{
-  float: left;
-  height: 250px;
-  width: 250px;
+  height: 210px;
+  width: 210px;
   overflow: hidden;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.review-list__img{
+  float: left;
   padding-top: 10px;
 }
 
 .review-list__text{
   float: right;
+  margin-right: 15px;
 }
 
 .review__list__item{
@@ -58,14 +62,80 @@ body{
   margin-bottom: 40px;
   margin-top: 40px;
   border: 1px solid #282c34;
-  padding: 15px;
+  padding: 25px;
+  border-radius: 50px;
+  background-color: #384269;
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.review-list__text h2{
+  font-family: 'Pacifico', Georgia, 'Times New Roman', Times, serif;
+  margin-top: 15px;
+}
+
+.review-list__text .btn{
+  height: 0px;
+  line-height: 0px;
+}
+
+.review-list__text h5{
+  font-size: 1.25rem;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  line-height: 90%;
+}
+
+.category{
+  font-weight: 600;
+}
+
+.review__button{
+  padding: 20px 50px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 1.15rem;
+  background-color: #d37e34;
+  color: #fff;
+}
+
+.review__button:hover{
+  background-color: #ab451f;
+  color: #fff;
+}
+
+.ui.rating .active.icon{
+  color: #d37e34;
+}
+
+.card{
+  padding: 2rem;
+  background-color: #384269;
+  color: #fff;
+}
+
+.review__title{
+  font-family: 'Pacifico', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.review{
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-size: 1.15rem;
+  line-height: 175%;
+  padding: 2.5rem;
+}
+
+.review__category{
+  font-size: 1.45rem;
+  line-height: 150%;
+}
+
+@media screen and (max-width: 450px){
+  .review-list__text{
+    margin: 0 auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .review{
+    padding: 0;
+    padding-bottom: 1rem;
   }
+
 }

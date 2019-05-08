@@ -15,13 +15,24 @@ function ReviewListItem(props) {
 
                     <div className="review-list__text">
                         <h2>{props.data.displayName}</h2>
-                        <h5>Country: {props.data.country}</h5>
-                        <h5>Program: {props.data.program}
+                        <h5>
+                            <span className="category">Country:
+                            </span>
+                            &nbsp; {props.data.country}</h5>
+                        <h5>
+                            <span className="category">Program:
+                            </span>
+                            &nbsp; {props.data.program}
                         </h5>
-                        <h5>Organizer: {props.data.tripOrg}</h5>
-                        <h5>Rating:
+                        <h5>
+                            <span className="category">Organizer:
+                            </span>
+                            &nbsp; {props.data.tripOrg}</h5>
+                        <h5>
+                            <span className="category">Rating:</span>
+                            &nbsp;
                             <Rating maxRating={5} disabled="true" rating={props.data.rating}/></h5>
-                        <a className="btn" href={`/review/${props.data._id}`}>View Review</a>
+                        <a className="btn review__button" href={`/review/${props.data._id}`}>View Review</a>
                     </div>
                 </div>
             </div>

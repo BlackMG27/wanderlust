@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import API from "../utils/API";
 import Moment from 'react-moment';
-import { Rating } from 'semantic-ui-react';
+import {Rating} from 'semantic-ui-react';
 
 class Review extends Component {
     state = {
@@ -15,12 +15,6 @@ class Review extends Component {
         program: "",
         review: "",
         isArchived: false
-    }
-
-    imgStyle = {
-        height: "200px",
-        width: "200px",
-        borderRadius: "50%"
     }
 
     cardStyle = {
@@ -65,56 +59,50 @@ class Review extends Component {
         console.log("state", this.state.id)
         return (
             <div className="container">
-                <div className="card cyan lighter-5" style={this.cardStyle}>
-                    {this.state.isArchived ? (<h4 className="center-align"> This review was archived </h4>) :
-                        (<div>
-                            <div className="row">
-                                <div className="col s12 m4"></div>
-                                <div className="col s12 m4 center-align">
-                                    <img
-                                        className="center-align"
-                                        src={this.state.img
-                                            ? this.state.img
-                                            : `https://ui-avatars.com/api/?name=${this.state.displayName}`}
-                                        style={this.imgStyle}
-                                        alt="trip" />
-                                    <h5>{this.state.displayName}</h5>
-                                </div>
-                                <div className="col s12 m4"></div>
-                            </div>
-                            <div className="row">
-                                <div className="col s12 m4"></div>
-                                <div className="col s12 m4 center-align">
-                                    <ul>
-                                        <li>Program Name: {this.state.program}
-                                        </li>
-                                        <li>Rating:
-                                    <Rating maxRating={5} disabled="true" rating={this.state.rating} /></li>
-                                        <li>Dates Traveled:{" "}
-                                            <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment>
-                                            -
-                                    <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateEnd}</Moment>
-                                        </li>
-                                        <li>Country: {this.state.country}</li>
-                                    </ul >
-                                </div>
-                                <div className="col s12 m4"></div>
-                            </div>
-                            <div className="row">
-                                {this.state.review}
-                            </div>
-                            <div className="row">
-                                <a
-                                    style={{
-                                        borderRadius: "3px",
-                                        letterSpacing: "1.5px",
-                                        marginTop: "1rem"
-                                    }}
-                                    className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
-                                    href={"/reviewlist/" + this.state.countryCode}>Back to Country</a>
-                            </div>
+                <div className="card ">
+                    <div className="row">
+                        <div className="col s12 m4"></div>
+                        <div className="col s12 m4 center-align">
+
+                            <img
+                                className="center-align review__img"
+                                src={this.state.img
+                                ? this.state.img
+                                : `https://ui-avatars.com/api/?name=${this.state.displayName}`}
+                                style={this.imgStyle}
+                                alt={this.state.displayName}/>
+                            <h2 className="review__title">{this.state.displayName}</h2>
                         </div>
-                        )}
+                        <div className="col s12 m4"></div>
+                    </div>
+                    <div className="row">
+                        <div className="col s12 m2"></div>
+                        <div className="col s12 m8 center-align">
+                            <ul>
+                                <li className="review__category">Program Name: {this.state.program}
+                                </li>
+                                <li className="review__category">Rating:
+                                    <Rating maxRating={5} disabled="true" rating={this.state.rating}/></li>
+                                <li className="review__category">Dates Traveled:{" "}
+                                    <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment>
+                                    -
+                                    <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateEnd}</Moment>
+                                </li>
+                                <li className="review__category">Country: {this.state.country}</li>
+                            </ul >
+                        </div>
+                        <div className="col s12 m2"></div>
+                    </div>
+                    <div className="row review">
+                        <div className="col s12">
+                            {this.state.review}
+                        </div>
+
+                    </div>
+                    <div className="row">
+                        <a className="review__button" href={"/reviewlist/" + this.state.countryCode}>Back to Country</a>
+                    </div>
+
                 </div >
             </div >
         )
