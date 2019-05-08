@@ -9,27 +9,6 @@ body{
 
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 #chartdiv{
   width: 100%;
   height: 600px;
@@ -73,7 +52,8 @@ body{
   margin-top: 15px;
 }
 
-.review-list__text .btn{
+.review-list__text .btn,
+.card .btn{
   height: 0px;
   line-height: 0px;
 }
@@ -88,16 +68,27 @@ body{
   font-weight: 600;
 }
 
-.review__button{
-  padding: 20px 50px;
-  margin-top: 20px;
+.review__button,
+.register__button{
+margin-top: 20px;
   margin-bottom: 15px;
   font-size: 1.15rem;
   background-color: #d37e34;
   color: #fff;
+  border-radius: 5px;
 }
 
-.review__button:hover{
+.review__button{
+  padding: 20px 50px;
+  
+}
+
+.register__button{
+  padding: 30px 50px;
+}
+
+.review__button:hover,
+.register__button:hover{
   background-color: #ab451f;
   color: #fff;
 }
@@ -109,6 +100,20 @@ body{
 .card{
   padding: 2rem;
   background-color: #384269;
+  color: #fff;
+}
+
+.form__view{
+  margin: 0 auto;
+}
+
+.back__home{
+  color: #fff;
+}
+
+.input-field .helper-text,
+.input-field label,
+.input-field input{
   color: #fff;
 }
 
