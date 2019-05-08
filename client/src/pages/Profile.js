@@ -228,7 +228,7 @@ class Profile extends Component {
                                         }}
                                         className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
                                         onClick={() => this.handleEdit(currentReview._id, currentReview.program)}>EDIT</button>
-                                    {this.state.showForm && this.formReviewId === currentReview._id ? this.formDisplay() : ''}
+                                    {this.state.showForm && this.state.formReviewId === currentReview._id ? this.formDisplay() : ''}
                                 </div>
                             </div>
                         )
