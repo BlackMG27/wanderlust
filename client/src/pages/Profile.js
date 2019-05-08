@@ -34,9 +34,15 @@ class Profile extends Component {
 
     handleDelete = (id) => {
         API.archiveReview(id).then(res => {
-            console.log(res);
-            window.location.reload();
-        })
+            // console.log(res)
+        }).then(API.getProfile(this.props.auth.user.id).then((res) => {
+            console.log("res", res)
+            this.setState({
+                email: res.data.email,
+                username: res.data.username,
+                review: res.data.review.filter(element => !element.isArchived)
+            })
+        }))
 
     }
 
@@ -77,7 +83,6 @@ class Profile extends Component {
                 <div className="input-field col s12">
 
                     <input onChange={this.onChange}
-                        //error={this.state.error.name}
                         value={this.state.formDisplayName}
                         id="formDisplayName"
                         type="text" />
@@ -99,7 +104,6 @@ class Profile extends Component {
                         id="formReview"
                         type="text"
                         className="materialize-textarea"></textarea>
-                    {/* <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs)</label> */}
                     <span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs) ***Required to Submit*** </span>
 
                 </div>
@@ -122,19 +126,13 @@ class Profile extends Component {
     updateReview = (e) => {
         e.preventDefault()
         const query = {
-            // _id: this.state.formReviewId,
-            // review: this.state.formReview,
-            // img: this.state.formImg,
-            // displayName: this.state.formDisplayName
+
         }
-
-
 
         let submitReview = this.state.formReview
         let submitImg = this.state.formImg.trim()
         let submitDisplayName = this.state.formDisplayName.trim()
 
-        console.log("review: !!!!!!!!!!!!!!!", submitReview, submitImg, submitDisplayName)
 
         if (this.state.formReviewId !== "") {
             query._id = this.state.formReviewId
@@ -150,17 +148,11 @@ class Profile extends Component {
             submitImg = `https://ui-avatars.com/api/?name=${submitDisplayName}`
         }
 
-
         query.img = submitImg
-
-
-
-        console.log('this is what wer are about to save!!!!', query)
 
         if (query.img && query.displayName && query.review) {
 
             API.editReview(query).then((res) => {
-                console.log("res", res.data);
 
             }).then(API.getProfile(this.props.auth.user.id).then((res) => {
                 this.setState({
