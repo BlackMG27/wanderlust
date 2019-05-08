@@ -12,7 +12,12 @@ class Profile extends Component {
     state = {
         email: "",
         review: [],
-        username: ""
+        username: "",
+        showForm: false,
+        formReviewId: '',
+        formReview: "",
+        formReviewProgram: ""
+
     }
 
     cardStyle = {
@@ -44,7 +49,49 @@ class Profile extends Component {
         })
     }
 
+    handleEdit(reviewId, program) {
+        console.log('review id', reviewId);
+        this.setState({ formReviewId: reviewId, showForm: !this.state.showForm, formReviewProgram: program, formReview: "" })
+    }
 
+    onChange = e => {
+        this.setState({ [e.target.id]: e.target.value });
+        console.log(this.state)
+    };
+
+    formDisplay = () => {
+
+        return (
+            <div>
+                <h6> Edit your review for <a target="_blank" rel="noopener noreferrer" href={`/review/${this.state.formReviewId}`}>{this.state.formReviewProgram}</a></h6>
+                <div className="input-field col s12">
+
+                    <textarea onChange={this.onChange}
+                        value={this.state.formReview}
+                        id="formReview"
+                        type="text"
+                        className="materialize-textarea"></textarea>
+                    {/* <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs)</label> */}
+                    <span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs)</span>
+
+                </div>
+                <button onClick={this.updateReview}> Submit</button>
+            </div>
+        )
+    }
+
+
+    updateReview = () => {
+        console.log('GO do axios call and smack the route!!', this.state.formReviewId)
+        const query = {
+            _id: this.state.formReviewId,
+            review: this.state.formReview
+        }
+        API.editReview(query).then((res) => {
+            console.log("res", res);
+            window.location.reload();
+        })
+    }
 
     render() {
 
@@ -52,7 +99,7 @@ class Profile extends Component {
         console.log("id", user.id)
         return (
             <div className="container" >
-                <div key="1" className="card cyan lighter-5" style={this.cardStyle}>
+                <div key="1" className="card cyan lighten-5" style={this.cardStyle}>
                     <div className="row">
                         <h6>Email:</h6> <h5>{this.state.email}</h5>
                     </div>
@@ -61,11 +108,12 @@ class Profile extends Component {
                     </div>
                 </div>
 
+
                 {/* If there is no data to be shown in the results section, give a message. Otherwise show cards for each book.  */}
-                {!this.state.review.length ? (<div className="card cyan lighter-5" style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
+                {!this.state.review.length ? (<div className="card cyan lighten-5" style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
                     this.state.review.map((currentReview, id) => {
                         return (
-                            <div className="card cyan lighter-5" key={currentReview._id} style={this.cardStyle}>
+                            <div className="card cyan lighten-5" key={currentReview._id} style={this.cardStyle}>
                                 <div className="row">
                                     <div className="col s12 m4"></div>
                                     <div className="col s12 m4 center-align">
@@ -96,10 +144,20 @@ class Profile extends Component {
                                     <button style={{
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "1rem"
+                                        marginTop: "1rem",
+                                        marginRight: ".5rem"
                                     }} className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
                                         onClick={() => this.handleDelete(currentReview._id)}
                                     >Delete</button>
+                                    <button
+                                        style={{
+                                            borderRadius: "3px",
+                                            letterSpacing: "1.5px",
+                                            marginTop: "1rem"
+                                        }}
+                                        className="btn btn-large waves-effect waves-light hoverable blue accent-3 center-block"
+                                        onClick={() => this.handleEdit(currentReview._id, currentReview.program)}>EDIT</button>
+                                    {this.state.showForm ? this.formDisplay() : ''}
                                 </div>
                             </div>
                         )
