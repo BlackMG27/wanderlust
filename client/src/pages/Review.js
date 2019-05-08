@@ -13,7 +13,8 @@ class Review extends Component {
         displayName: "",
         img: "",
         program: "",
-        review: ""
+        review: "",
+        isArchived: false
     }
 
     cardStyle = {
@@ -47,7 +48,8 @@ class Review extends Component {
                     img: res.data.img,
                     program: res.data.program,
                     review: res.data.review,
-                    rating: res.data.rating
+                    rating: res.data.rating,
+                    isArchived: res.data.isArchived
                 })
             })
 
