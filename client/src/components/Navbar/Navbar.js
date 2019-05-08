@@ -1,4 +1,7 @@
 import React from "react";
+
+import Logo from "../../img/logonav.png"
+
 import "../Navbar/Navbar.css"
 
 // import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
@@ -8,6 +11,7 @@ import "../Navbar/Navbar.css"
 //console.log("log", logoutUser)
 
 
+
 // function NavTabs(props) {
     class NavTabs extends React.Component {
         burgerClick = () => {
@@ -15,7 +19,6 @@ import "../Navbar/Navbar.css"
         }
 
         // console.log("props", props)
-  
 
 
         render() {
