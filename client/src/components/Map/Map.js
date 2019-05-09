@@ -44,19 +44,12 @@ class Map extends React.Component {
             activeCodes.push(codesFromDB.data[i].countryCode);
 
         }
-        console.log(activeCodes)
 
         polygonSeries.data = activeCodes.map(codes => ({
             'id': codes,
             'color': am4core.color('#FECF6A'),
             'link': `/reviewlist/${codes}`
         }))
-
-        // polygonSeries.data = [     {         'id': 'FR',         'color':
-        // am4core.color('#FECF6A'),         'link':
-        // 'https://www.meetup.com/a11ychi/events/261052295/'     }, {         'id':
-        // 'IT',         'color': am4core.color('#FECF6A'),         'link':
-        // 'https://htmlcolors.com/hex/fecf6a'     } ]
 
         const colorSet = new am4core.ColorSet();
 
