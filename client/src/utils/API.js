@@ -3,7 +3,9 @@ import axios from "axios";
 export default {
 
     createReview: function (query) {
-
+        let data = {
+            data: query
+        };
         return axios.post("/api/review", data);
     },
 
