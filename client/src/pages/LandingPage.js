@@ -5,7 +5,7 @@ function LandingPage() {
     return (
         <div className="body-splash">
             <div>
-                <img className="header__logo" src={Logo}/>
+                <img className="header__logo" src={Logo} alt="Wanderlust Logo"/>
             </div>
 
             <hr className="header__rule"/>
