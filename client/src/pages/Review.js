@@ -89,7 +89,7 @@ class Review extends Component {
                                 <li className="review__category">
                                     <span className="category">Rating:
                                     </span>&nbsp;
-                                    <Rating maxRating={5} disabled="true" rating={this.state.rating}/></li>
+                                    <Rating maxRating={5} disabled={true} rating={this.state.rating}/></li>
                                 <li className="review__category">
                                     <span className="category">Dates Traveled:</span>&nbsp;{" "}
                                     <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment>
