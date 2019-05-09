@@ -19,7 +19,8 @@ class Profile extends Component {
         formReviewProgram: "",
         formDisplayName: "",
         formImg: "",
-        error: ""
+        error: "",
+        formSubmitted: false
     }
 
     cardStyle = {
@@ -86,7 +87,8 @@ class Profile extends Component {
                         value={this.state.formDisplayName}
                         id="formDisplayName"
                         type="text" />
-                    <span className="helper-text">Displayed User Name ***Required to Submit***</span>
+                    {this.state.formSubmitted && !this.state.formReview ? (<span className="helper-text red-text" >Displayed User Name **</span>)
+                        : (<span className="helper-text" >Displayed User Name</span>)}
 
                 </div>
                 <div className="input-field col s12">
@@ -104,7 +106,8 @@ class Profile extends Component {
                         id="formReview"
                         type="text"
                         className="materialize-textarea"></textarea>
-                    <span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs) ***Required to Submit*** </span>
+                    {this.state.formSubmitted && !this.state.formReview ? (<span className="helper-text red-text" >Write a Review of your Trip (1-4 Paragraphs) ** </span>)
+                        : (<span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs)</span>)}
 
                 </div>
                 <button style={{
@@ -117,7 +120,7 @@ class Profile extends Component {
                     className="review__button"
                     onClick={this.updateReview}>SUBMIT</button>
 
-                <span className="red-text">{this.state.error}</span>
+                <p className="red-text">{this.state.error}</p>
             </div>
         )
     }
@@ -125,6 +128,8 @@ class Profile extends Component {
 
     updateReview = (e) => {
         e.preventDefault()
+        this.setState({ formSubmitted: true })
+
         const query = {
 
         }
@@ -164,7 +169,7 @@ class Profile extends Component {
             }))
         } else {
             this.setState({
-                error: "Make sure Display Name & Review content are not blank"
+                error: "Make sure the fields marked with ** are not blank"
             })
         }
 
