@@ -91,7 +91,7 @@ class ReviewForm extends Component {
         const { user } = this.props.auth;
         // console.log("user", user) .setState({ user: user })
         return (
-            <div className="container z-depth-1 card form__view row">
+            <div className="container z-depth-1 card form__view row card_mt">
                 {/* <form> */}
 
                 {/* displayName */}
@@ -127,10 +127,10 @@ class ReviewForm extends Component {
                         id="program"
                         type="text" /> {this.state.formSubmitted && !this.state.program
                             ? (
-                                <label htmlFor="text">Name of Program ***Required to Submit***</label>
+                                <label htmlFor="text">Program Name ***Required to Submit***</label>
                             )
                             : (
-                                <label htmlFor="text">Name of Program</label>
+                                <label htmlFor="text">Program Name</label>
                             )}
                 </div>
                 <div className="input-field col s12">
@@ -141,10 +141,12 @@ class ReviewForm extends Component {
                         id="tripOrg"
                         type="text" /> {this.state.formSubmitted && !this.state.tripOrg
                             ? (
-                                <label htmlFor="text">Who was the trip organizer? ***Required to Submit***</label>
+
+                                <label htmlFor="text">Trip Organizer ***Required to Submit***</label>
+
                             )
                             : (
-                                <label htmlFor="text">Who was the trip organizer?</label>
+                                <label htmlFor="text">Trip Organizer</label>
                             )}
                 </div>
                 <div className="input-field col s12">
@@ -155,10 +157,10 @@ class ReviewForm extends Component {
                         id="country"
                         type="text" /> {this.state.formSubmitted && !this.state.country
                             ? (
-                                <label htmlFor="text">What Country Did You Study In? ***Required to Submit***</label>
+                                <label htmlFor="text">Primary Country Visited ***Required to Submit***</label>
                             )
                             : (
-                                <label htmlFor="text">What Country Did You Study In?</label>
+                                <label htmlFor="text">Primary Country Visited</label>
                             )}
                 </div>
 
@@ -216,10 +218,10 @@ class ReviewForm extends Component {
 
                     {this.state.formSubmitted && !this.state.country
                         ? (
-                            <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs) ***Required to Submit***</label>
+                            <label htmlFor="text">Your review (1-4 Paragraphs) ***Required to Submit***</label>
                         )
                         : (
-                            <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs)</label>
+                            <label htmlFor="text">Your review (1-4 Paragraphs)</label>
                         )}
 
                 </div>

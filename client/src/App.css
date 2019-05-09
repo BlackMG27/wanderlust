@@ -122,6 +122,10 @@ margin-top: 20px;
   margin: 0 auto;
 }
 
+.card_mt{
+  margin-top: 5rem;
+}
+
 .back__home{
   color: #fff;
 }

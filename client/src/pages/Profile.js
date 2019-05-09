@@ -176,7 +176,7 @@ class Profile extends Component {
         console.log("id", user.id)
         return (
             <div className="container" >
-                <div key="1" className="card " style={this.cardStyle}>
+                <div key="1" className="card card_mt" style={this.cardStyle}>
                     <div className="row">
                         <h6>Email:</h6> <h5>{this.state.email}</h5>
                     </div>
