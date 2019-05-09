@@ -6,14 +6,54 @@ body{
   background-image: url("../src/img/world-map.png");
   background-position-x: 37%;
   background-position-y: 0;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
 }
 
 .body-splash {
-  background-color: #153ed5;
-  /* background-image: url("../src/img/china-blue.png");
-  background-size: 906px; */
+  background-image: url('./images/gorge-shutter-min.jpg');
+  background-size: cover;
+  min-height: 210vh;
+}
+
+.header__caution{
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: .5rem;
+}
+
+.header__logo{
+  width: 55%;
+  margin-top: 6.5%;
+  margin-bottom: 2.5%;
+  margin-left: 21%;
+}
+
+.header__rule{
+  width: 80%;
+  background-color: #d37e34;
+  height: 5px;
+  border: none;
+
+}
+
+.header__copy{
+  text-align: center;
+  font-size: 1.35rem;
+  width: 80%;
+  padding: .5rem;
+  margin-left: 10%;
+  margin-bottom: 4%;
+  color: #fff;
+}
+
+.contributors{
+  text-align: center;
+  font-size: 1.85rem;
+  font-family: 'Pacifico', Georgia, 'Times New Roman', Times, serif;
+  color: #fff;
 }
 
 .logo__smaller {
@@ -156,6 +196,12 @@ margin-top: 20px;
   .review{
     padding: 0;
     padding-bottom: 1rem;
+  }
+
+  .header__logo{
+    margin-top: 10%;
+    margin-left: 17%;
+    width: 70%;
   }
 
 }
