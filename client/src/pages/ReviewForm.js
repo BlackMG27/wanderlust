@@ -20,7 +20,8 @@ class ReviewForm extends Component {
         dateStart: "",
         dateEnd: "",
         rating: "",
-        tripOrg: ""
+        tripOrg: "",
+        error: ""
 
     }
 
@@ -58,30 +59,35 @@ class ReviewForm extends Component {
 
         //Validation user.preventDefault();
 
-        API
-            .grabCountryCode(this.state.country)
-            .then((res) => {
-                const query = {
-                    userId: user.id,
-                    review: this.state.review,
-                    displayName: this.state.displayName,
-                    img: this.state.img,
-                    program: this.state.program,
-                    country: this.state.country,
-                    countryCode: res.data,
-                    dateStart: this.state.dateStart,
-                    dateEnd: this.state.dateEnd,
-                    rating: this.state.rating,
-                    tripOrg: this.state.tripOrg
-                }
-                API
-                    .createReview(query)
-                    .then((res) => {
-                        console.log("res", res)
-                        window.location.href = "./map"
-                    })
+        if (this.state.displayName && this.state.program && this.state.tripOrg && this.state.country && this.state.dateStart && this.state.dateEnd && this.state.review) {
 
-            })
+            API
+                .grabCountryCode(this.state.country)
+                .then((res) => {
+                    const query = {
+                        userId: user.id,
+                        review: this.state.review,
+                        displayName: this.state.displayName,
+                        img: this.state.img,
+                        program: this.state.program,
+                        country: this.state.country,
+                        countryCode: res.data,
+                        dateStart: this.state.dateStart,
+                        dateEnd: this.state.dateEnd,
+                        rating: this.state.rating,
+                        tripOrg: this.state.tripOrg
+                    }
+                    API
+                        .createReview(query)
+                        .then((res) => {
+                            console.log("res", res)
+                            window.location.href = "./map"
+                        })
+
+                })
+        } else {
+            this.setState({ error: "Please fill out the fields marked with **" })
+        }
 
     }
 
@@ -91,7 +97,7 @@ class ReviewForm extends Component {
         const { user } = this.props.auth;
         // console.log("user", user) .setState({ user: user })
         return (
-            <div className="container z-depth-1 card form__view row">
+            <div className="container z-depth-1 card form__view row card_mt">
                 {/* <form> */}
 
                 {/* displayName */}
@@ -106,7 +112,7 @@ class ReviewForm extends Component {
                         id="displayName"
                         type="text" /> {this.state.formSubmitted && !this.state.displayName
                             ? (
-                                <label htmlFor="text">Name ***Required to Submit***</label>
+                                <label htmlFor="text" className="red-text">Name **</label>
                             )
                             : (
                                 <label htmlFor="text">Name</label>
@@ -127,10 +133,10 @@ class ReviewForm extends Component {
                         id="program"
                         type="text" /> {this.state.formSubmitted && !this.state.program
                             ? (
-                                <label htmlFor="text">Name of Program ***Required to Submit***</label>
+                                <label htmlFor="text" className="red-text">Program Name **</label>
                             )
                             : (
-                                <label htmlFor="text">Name of Program</label>
+                                <label htmlFor="text">Program Name</label>
                             )}
                 </div>
                 <div className="input-field col s12">
@@ -141,10 +147,12 @@ class ReviewForm extends Component {
                         id="tripOrg"
                         type="text" /> {this.state.formSubmitted && !this.state.tripOrg
                             ? (
-                                <label htmlFor="text">Who was the trip organizer? ***Required to Submit***</label>
+
+                                <label htmlFor="text" className="red-text">Trip Organizer **</label>
+
                             )
                             : (
-                                <label htmlFor="text">Who was the trip organizer?</label>
+                                <label htmlFor="text">Trip Organizer</label>
                             )}
                 </div>
                 <div className="input-field col s12">
@@ -155,10 +163,11 @@ class ReviewForm extends Component {
                         id="country"
                         type="text" /> {this.state.formSubmitted && !this.state.country
                             ? (
-                                <label htmlFor="text">What Country Did You Study In? ***Required to Submit***</label>
+                                <label htmlFor="text" className="red-text">Primary Country Visited **
+                                </label>
                             )
                             : (
-                                <label htmlFor="text">What Country Did You Study In?</label>
+                                <label htmlFor="text">Primary Country Visited</label>
                             )}
                 </div>
 
@@ -171,7 +180,7 @@ class ReviewForm extends Component {
                         id="dateStart"
                         type="date" /> {this.state.formSubmitted && !this.state.dateStart
                             ? (
-                                <span className="helper-text">Start Date ***Required to Submit***</span>
+                                <span className="helper-text red-text">Start Date **</span>
 
                             )
                             : (
@@ -188,7 +197,7 @@ class ReviewForm extends Component {
                         id="dateEnd"
                         type="date" /> {this.state.formSubmitted && !this.state.dateEnd
                             ? (
-                                <span className="helper-text">End Date ***Required to Submit***</span>
+                                <span className="helper-text red-text">End Date **</span>
 
                             )
                             : (
@@ -201,7 +210,7 @@ class ReviewForm extends Component {
 
                     <span className="helper-text" id="rating">How would you rate your experience?
                     </span>
-                    <Rating maxRating={5} onRate={this.handleRate} /> {/* <pre>{JSON.stringify()}</pre> */}
+                    <Rating defaultRating={3} maxRating={5} onRate={this.handleRate} /> {/* <pre>{JSON.stringify()}</pre> */}
 
                 </div>
 
@@ -216,10 +225,10 @@ class ReviewForm extends Component {
 
                     {this.state.formSubmitted && !this.state.country
                         ? (
-                            <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs) ***Required to Submit***</label>
+                            <label htmlFor="text" className="red-text">Your review (1-4 Paragraphs) **</label>
                         )
                         : (
-                            <label htmlFor="text">Write a Review of your Trip (1-4 Paragraphs)</label>
+                            <label htmlFor="text">Your review (1-4 Paragraphs)</label>
                         )}
 
                 </div>
@@ -233,9 +242,7 @@ class ReviewForm extends Component {
                     }}
                     type="submit"
                     onClick={() => this.handleFormSubmit(user)}
-                    className="btn review__button">
-                    Submit
-                </button>
+                    className="btn review__button">Submit</button> <p className="red-text">{this.state.error}</p>
                 {/* </form> */}
             </div >
         )
