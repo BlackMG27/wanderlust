@@ -16,7 +16,6 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     create: function (req, res) {
-        console.log(req.body)
         db
             .Review
             .create(req.body.data)
@@ -37,7 +36,7 @@ module.exports = {
     findAllCodes: function (req, res) {
         db
             .Review
-            .find({}, {
+            .find({ isArchived: false }, {
                 "_id": 0,
                 "countryCode": 1
             })
@@ -49,7 +48,6 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     editReview: function (req, res) {
-        console.log(req.body)
         db.Review.findByIdAndUpdate(req.body._id, { review: req.body.review, img: req.body.img, displayName: req.body.displayName })
             .then(dbReview => res.json(dbReview))
             .catch(err => res.status(422).json(err))

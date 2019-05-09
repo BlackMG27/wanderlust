@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {logoutUser} from "../actions/authActions";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
 import API from "../utils/API";
-import {Rating} from 'semantic-ui-react';
+import { Rating } from 'semantic-ui-react';
 import Moment from 'react-moment';
 
 class Profile extends Component {
@@ -52,23 +52,18 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        API
-            .getProfile(this.props.auth.user.id)
-            .then((res) => {
-                console.log("res", res)
-                this.setState({
-                    email: res.data.email,
-                    username: res.data.username,
-                    review: res
-                        .data
-                        .review
-                        .filter(element => !element.isArchived)
-                })
+        API.getProfile(this.props.auth.user.id).then((res) => {
+            // console.log("res", res)
+            this.setState({
+                email: res.data.email,
+                username: res.data.username,
+                review: res.data.review.filter(element => !element.isArchived)
             })
+        })
     }
 
+
     handleEdit(reviewId, program, content, name, img) {
-        console.log('review id', reviewId);
         this.setState({
             formReviewId: reviewId,
             showForm: !this.state.showForm,
@@ -80,17 +75,14 @@ class Profile extends Component {
     }
 
     onChange = e => {
-        this.setState({
-            [e.target.id]: e.target.value
-        });
-        console.log(this.state)
+        this.setState({ [e.target.id]: e.target.value });
     };
 
     formDisplay = () => {
 
         return (
             <div className="row">
-                <br/>
+                <br />
                 <h6>
                     Edit your review for
                     <a
@@ -104,13 +96,13 @@ class Profile extends Component {
                         onChange={this.onChange}
                         value={this.state.formDisplayName}
                         id="formDisplayName"
-                        type="text"/> {this.state.formSubmitted && !this.state.formReview
-                        ? (
-                            <span className="helper-text red-text">Displayed User Name **</span>
-                        )
-                        : (
-                            <span className="helper-text">Displayed User Name</span>
-                        )}
+                        type="text" /> {this.state.formSubmitted && !this.state.formReview
+                            ? (
+                                <span className="helper-text red-text">Displayed User Name **</span>
+                            )
+                            : (
+                                <span className="helper-text">Displayed User Name</span>
+                            )}
 
                 </div>
                 <div className="input-field col s12">
@@ -118,13 +110,13 @@ class Profile extends Component {
                     <input
                         onChange={this.onChange}
                         value={this
-                        .state
-                        .formImg
-                        .includes("https://ui-avatars.com")
-                        ? (this.setState({formImg: ""}), this.state.formImg)
-                        : this.state.formImg}
+                            .state
+                            .formImg
+                            .includes("https://ui-avatars.com")
+                            ? (this.setState({ formImg: "" }), this.state.formImg)
+                            : this.state.formImg}
                         id="formImg"
-                        type="text"/>
+                        type="text" />
                     <span className="helper-text">Review Image URL</span>
                 </div>
 
@@ -147,11 +139,11 @@ class Profile extends Component {
                 </div>
                 <button
                     style={{
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem",
-                    marginRight: ".5rem"
-                }}
+                        borderRadius: "3px",
+                        letterSpacing: "1.5px",
+                        marginTop: "1rem",
+                        marginRight: ".5rem"
+                    }}
                     type="submit"
                     className="review__button"
                     onClick={this.updateReview}>SUBMIT</button>
@@ -163,7 +155,7 @@ class Profile extends Component {
 
     updateReview = (e) => {
         e.preventDefault()
-        this.setState({formSubmitted: true})
+        this.setState({ formSubmitted: true })
 
         const query = {}
 
@@ -197,7 +189,7 @@ class Profile extends Component {
 
             API
                 .editReview(query)
-                .then((res) => {})
+                .then((res) => { })
                 .then(API.getProfile(this.props.auth.user.id).then((res) => {
                     this.setState({
                         email: res.data.email,
@@ -210,15 +202,14 @@ class Profile extends Component {
                     })
                 }))
         } else {
-            this.setState({error: "Make sure the fields marked with ** are not blank"})
+            this.setState({ error: "Make sure the fields marked with ** are not blank" })
         }
 
     }
 
     render() {
 
-        const {user} = this.props.auth;
-        console.log("id", user.id)
+        const { user } = this.props.auth;
         return (
             <div className="container">
                 <div key="1" className="card card_mt" style={this.cardStyle}>
@@ -226,9 +217,8 @@ class Profile extends Component {
                         <div className="col s12 m6 center-align">
                             <h4>Email:</h4>
                             <h3 className="review__title">{this.state.email}</h3>
-                            <br/>
+                            <br />
                         </div>
-                        {/* <div className="row"> */}
                         <div className="col s12 m6 center-align">
                             <h4>User Name:</h4>
                             <h3 className="review__title">{this.state.username}</h3>
@@ -251,13 +241,7 @@ class Profile extends Component {
                                     <div className="col s12 m4"></div>
                                     <div className="col s12 m4 center-align">
 
-                                        <img
-                                            className="center-align"
-                                            src={currentReview.img
-                                            ? currentReview.img
-                                            : `https://ui-avatars.com/api/?name=${currentReview.displayName}`}
-                                            style={this.imgStyle}
-                                            alt="trip"/>
+                                        <img className="center-align" src={currentReview.img ? currentReview.img : `https://ui-avatars.com/api/?name=${currentReview.displayName}&size=350&background=d37e34&color=384269`} style={this.imgStyle} alt="trip" />
                                         <h2 className="review__title">{currentReview.displayName}</h2>
                                     </div>
                                     <div className="col s12 m4"></div>
@@ -280,7 +264,7 @@ class Profile extends Component {
                                                 <span className="category">Rating:
                                                 </span>
                                                 &nbsp;
-                                                <Rating maxRating={5} disabled={true} rating={currentReview.rating}/></li>
+                                                <Rating maxRating={5} disabled={true} rating={currentReview.rating} /></li>
                                             <li className="review__category">
                                                 <span className="category">Dates Traveled:
                                                 </span>
@@ -303,19 +287,19 @@ class Profile extends Component {
                                 <div className="row">
                                     <button
                                         style={{
-                                        borderRadius: "3px",
-                                        letterSpacing: "1.5px",
-                                        marginTop: "1rem",
-                                        marginRight: ".5rem"
-                                    }}
+                                            borderRadius: "3px",
+                                            letterSpacing: "1.5px",
+                                            marginTop: "1rem",
+                                            marginRight: ".5rem"
+                                        }}
                                         className="review__button"
                                         onClick={() => this.handleDelete(currentReview._id)}>DELETE</button>
                                     <button
                                         style={{
-                                        borderRadius: "3px",
-                                        letterSpacing: "1.5px",
-                                        marginTop: "1rem"
-                                    }}
+                                            borderRadius: "3px",
+                                            letterSpacing: "1.5px",
+                                            marginTop: "1rem"
+                                        }}
                                         className="review__button"
                                         onClick={() => this.handleEdit(currentReview._id, currentReview.program, currentReview.review, currentReview.displayName, currentReview.img)}>EDIT</button>
                                     {this.state.showForm && this.state.formReviewId === currentReview._id
@@ -336,6 +320,6 @@ Profile.propTypes = {
     auth: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({auth: state.auth});
+const mapStateToProps = state => ({ auth: state.auth });
 
-export default connect(mapStateToProps, {logoutUser})(Profile);
+export default connect(mapStateToProps, { logoutUser })(Profile);

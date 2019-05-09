@@ -27,17 +27,14 @@ class Review extends Component {
     }
 
     getIDFromURL = () => {
-        console.log(window.location.pathname);
         const goal = window
             .location
             .pathname
             .split("/");
         const idFromURL = goal[goal.length - 1];
-        // console.log(idFromURL) this.setState({ id: idFromURL })
         API
             .showReview(idFromURL)
             .then((res) => {
-                console.log("res", res)
                 this.setState({
                     id: res.data._id,
                     country: res.data.country,
@@ -57,7 +54,6 @@ class Review extends Component {
     }
 
     render() {
-        console.log("state", this.state.id)
         return (
             <div className="container">
                 <div className="card ">

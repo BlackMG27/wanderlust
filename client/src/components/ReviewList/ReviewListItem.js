@@ -1,5 +1,5 @@
-import React, {Fragment} from 'react';
-import {Rating} from 'semantic-ui-react';
+import React, { Fragment } from 'react';
+import { Rating } from 'semantic-ui-react';
 
 function ReviewListItem(props) {
     console.log(props.data);
@@ -11,9 +11,9 @@ function ReviewListItem(props) {
                     <img
                         className="review-list__img review-list__img2"
                         src={props.data.img
-                        ? props.data.img
-                        : `https://ui-avatars.com/api/?name=${props.data.displayName}&size=350&background=d37e34&color=384269`}
-                        alt={props.data.displayName}/>
+                            ? props.data.img
+                            : `https://ui-avatars.com/api/?name=${props.data.displayName}&size=350&background=d37e34&color=384269`}
+                        alt={props.data.displayName} />
 
                 </div>
 
@@ -35,7 +35,7 @@ function ReviewListItem(props) {
                     <h5>
                         <span className="category">Rating:</span>
                         &nbsp;
-                        <Rating maxRating={5} disabled="true" rating={props.data.rating}/></h5>
+                            <Rating maxRating={5} disabled={true} rating={props.data.rating} /></h5>
                     <a className="btn review__button" href={`/review/${props.data._id}`}>View Review</a>
                 </div>
             </div>

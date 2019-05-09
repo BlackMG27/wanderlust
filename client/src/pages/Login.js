@@ -16,8 +16,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        // If logged in and user navigates to Login page, should redirect them to
-        // dashboard
+        // If logged in and user navigates to Login page, should redirect them to profile page
         if (this.props.auth.isAuthenticated) {
             this
                 .props
@@ -31,7 +30,7 @@ class Login extends Component {
             this
                 .props
                 .history
-                .push("/"); // push user to dashboard when they login
+                .push("/map"); // push user to map when they login
         }
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors });
@@ -49,7 +48,6 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        console.log(userData);
         this
             .props
             .loginUser(userData);
@@ -79,7 +77,7 @@ class Login extends Component {
                             </h4>
                             <p>
                                 Don't have an account?
-                                <Link to="/register">Register</Link>
+                                <Link to="/register">  Sign-up</Link>
                             </p>
                         </div>
                         <form noValidate onSubmit={this.onSubmit}>

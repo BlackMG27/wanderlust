@@ -19,7 +19,7 @@ class ReviewForm extends Component {
         countryCode: "",
         dateStart: "",
         dateEnd: "",
-        rating: "",
+        rating: 3,
         tripOrg: "",
         error: ""
     }

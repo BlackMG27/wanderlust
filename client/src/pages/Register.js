@@ -24,7 +24,7 @@ class Register extends Component {
             this
                 .props
                 .history
-                .push("/profile");
+                .push("/map");
         }
     }
 
