@@ -6,8 +6,6 @@ import API from "../utils/API";
 import { Rating } from 'semantic-ui-react';
 import Moment from 'react-moment';
 
-
-
 class Profile extends Component {
     state = {
         email: "",
@@ -34,15 +32,22 @@ class Profile extends Component {
     }
 
     handleDelete = (id) => {
-        API.archiveReview(id).then(res => {
-            // console.log(res)
-        }).then(API.getProfile(this.props.auth.user.id).then((res) => {
-            this.setState({
-                email: res.data.email,
-                username: res.data.username,
-                review: res.data.review.filter(element => !element.isArchived)
+        API
+            .archiveReview(id)
+            .then(res => {
+                // console.log(res)
             })
-        }))
+            .then(API.getProfile(this.props.auth.user.id).then((res) => {
+                console.log("res", res)
+                this.setState({
+                    email: res.data.email,
+                    username: res.data.username,
+                    review: res
+                        .data
+                        .review
+                        .filter(element => !element.isArchived)
+                })
+            }))
 
     }
 
@@ -56,6 +61,7 @@ class Profile extends Component {
             })
         })
     }
+
 
     handleEdit(reviewId, program, content, name, img) {
         this.setState({
@@ -77,42 +83,67 @@ class Profile extends Component {
         return (
             <div className="row">
                 <br />
-                <h6> Edit your review for <a target="_blank" rel="noopener noreferrer" href={`/review/${this.state.formReviewId}`}>{this.state.formReviewProgram}</a></h6>
+                <h6>
+                    Edit your review for
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={`/review/${this.state.formReviewId}`}>{this.state.formReviewProgram}</a>
+                </h6>
                 <div className="input-field col s12">
 
-                    <input onChange={this.onChange}
+                    <input
+                        onChange={this.onChange}
                         value={this.state.formDisplayName}
                         id="formDisplayName"
-                        type="text" />
-                    {this.state.formSubmitted && !this.state.formReview ? (<span className="helper-text red-text" >Displayed User Name **</span>)
-                        : (<span className="helper-text" >Displayed User Name</span>)}
+                        type="text" /> {this.state.formSubmitted && !this.state.formReview
+                            ? (
+                                <span className="helper-text red-text">Displayed User Name **</span>
+                            )
+                            : (
+                                <span className="helper-text">Displayed User Name</span>
+                            )}
 
                 </div>
                 <div className="input-field col s12">
 
-                    <input onChange={this.onChange}
-                        value={this.state.formImg.includes("https://ui-avatars.com") ? (this.setState({ formImg: "" }), this.state.formImg) : this.state.formImg}
+                    <input
+                        onChange={this.onChange}
+                        value={this
+                            .state
+                            .formImg
+                            .includes("https://ui-avatars.com")
+                            ? (this.setState({ formImg: "" }), this.state.formImg)
+                            : this.state.formImg}
                         id="formImg"
                         type="text" />
                     <span className="helper-text">Review Image URL</span>
                 </div>
 
                 <div className="input-field col s12">
-                    <textarea onChange={this.onChange}
+                    <textarea
+                        onChange={this.onChange}
                         value={this.state.formReview}
                         id="formReview"
                         type="text"
                         className="materialize-textarea"></textarea>
-                    {this.state.formSubmitted && !this.state.formReview ? (<span className="helper-text red-text" >Write a Review of your Trip (1-4 Paragraphs) ** </span>)
-                        : (<span className="helper-text" >Write a Review of your Trip (1-4 Paragraphs)</span>)}
+                    {this.state.formSubmitted && !this.state.formReview
+                        ? (
+                            <span className="helper-text red-text">Write a Review of your Trip (1-4 Paragraphs) **
+                            </span>
+                        )
+                        : (
+                            <span className="helper-text">Write a Review of your Trip (1-4 Paragraphs)</span>
+                        )}
 
                 </div>
-                <button style={{
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem",
-                    marginRight: ".5rem"
-                }}
+                <button
+                    style={{
+                        borderRadius: "3px",
+                        letterSpacing: "1.5px",
+                        marginTop: "1rem",
+                        marginRight: ".5rem"
+                    }}
                     type="submit"
                     className="review__button"
                     onClick={this.updateReview}>SUBMIT</button>
@@ -122,19 +153,21 @@ class Profile extends Component {
         )
     }
 
-
     updateReview = (e) => {
         e.preventDefault()
         this.setState({ formSubmitted: true })
 
-        const query = {
-
-        }
+        const query = {}
 
         let submitReview = this.state.formReview
-        let submitImg = this.state.formImg.trim()
-        let submitDisplayName = this.state.formDisplayName.trim()
-
+        let submitImg = this
+            .state
+            .formImg
+            .trim()
+        let submitDisplayName = this
+            .state
+            .formDisplayName
+            .trim()
 
         if (this.state.formReviewId !== "") {
             query._id = this.state.formReviewId
@@ -154,20 +187,22 @@ class Profile extends Component {
 
         if (query.img && query.displayName && query.review) {
 
-            API.editReview(query).then((res) => {
-
-            }).then(API.getProfile(this.props.auth.user.id).then((res) => {
-                this.setState({
-                    email: res.data.email,
-                    username: res.data.username,
-                    review: res.data.review.filter(element => !element.isArchived),
-                    showForm: false
-                })
-            }))
+            API
+                .editReview(query)
+                .then((res) => { })
+                .then(API.getProfile(this.props.auth.user.id).then((res) => {
+                    this.setState({
+                        email: res.data.email,
+                        username: res.data.username,
+                        review: res
+                            .data
+                            .review
+                            .filter(element => !element.isArchived),
+                        showForm: false
+                    })
+                }))
         } else {
-            this.setState({
-                error: "Make sure the fields marked with ** are not blank"
-            })
+            this.setState({ error: "Make sure the fields marked with ** are not blank" })
         }
 
     }
@@ -176,23 +211,29 @@ class Profile extends Component {
 
         const { user } = this.props.auth;
         return (
-            <div className="container" >
+            <div className="container">
                 <div key="1" className="card card_mt" style={this.cardStyle}>
                     <div className="row">
                         <div className="col s12 m6 center-align">
-                            <h4>Email:</h4> <h3 className="review__title">{this.state.email}</h3>
+                            <h4>Email:</h4>
+                            <h3 className="review__title">{this.state.email}</h3>
                             <br />
                         </div>
                         <div className="col s12 m6 center-align">
-                            <h4>User Name:</h4> <h3 className="review__title">{this.state.username}</h3>
+                            <h4>User Name:</h4>
+                            <h3 className="review__title">{this.state.username}</h3>
                         </div>
                     </div>
                 </div>
 
-
                 {/* If there is no data to be shown in the results section, give a message. Otherwise show cards for each book.  */}
-                {!this.state.review.length ? (<div className="card " style={this.cardStyle}><h5 className="text-center">No Reviews to Display</h5></div>) : (
-                    this.state.review.map((currentReview, id) => {
+                {!this.state.review.length
+                    ? (
+                        <div className="card " style={this.cardStyle}>
+                            <h5 className="text-center">No Reviews to Display</h5>
+                        </div>
+                    )
+                    : (this.state.review.map((currentReview, id) => {
 
                         return (
                             <div className="card " key={currentReview._id} style={this.cardStyle}>
@@ -206,32 +247,53 @@ class Profile extends Component {
                                     <div className="col s12 m4"></div>
                                 </div>
                                 <div className="row">
-                                    <div className="col s12 m4"></div>
-                                    <div className="col s12 m4 center-align">
+                                    <div className="col s12 m2"></div>
+                                    <div className="col s12 m8 center-align">
                                         <ul>
-                                            <li>Program Name: {currentReview.program} </li>
-                                            <li>Organizer: {currentReview.tripOrg} </li>
-                                            <li>Rating:
-                                    <Rating maxRating={5} disabled={true} rating={currentReview.rating} /></li>
-                                            <li>Dates Traveled:{" "}
-                                                <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{currentReview.dateStart}</Moment> - <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{currentReview.dateEnd}</Moment></li>
-                                            <li>Country: {currentReview.country}</li>
+                                            <li className="review__category">
+                                                <span className="category">Program Name:
+                                                </span>
+                                                &nbsp;{currentReview.program}
+                                            </li>
+                                            <li className="review__category">
+                                                <span className="category">Trip Organizer:
+                                                </span>
+                                                &nbsp; {currentReview.tripOrg}
+                                            </li>
+                                            <li className="review__category">
+                                                <span className="category">Rating:
+                                                </span>
+                                                &nbsp;
+                                                <Rating maxRating={5} disabled={true} rating={currentReview.rating} /></li>
+                                            <li className="review__category">
+                                                <span className="category">Dates Traveled:
+                                                </span>
+                                                &nbsp;{" "}
+                                                <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{currentReview.dateStart}</Moment>
+                                                &nbsp;-&nbsp;
+                                                <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{currentReview.dateEnd}</Moment>
+                                            </li>
+                                            <li className="review__category">
+                                                <span className="category">Country:
+                                                </span>
+                                                &nbsp; {currentReview.country}</li>
                                         </ul >
                                     </div>
-                                    <div className="col s12 m4"></div>
+                                    <div className="col s12 m2"></div>
                                 </div>
-                                <div className="row">
+                                <div className="row review">
                                     {currentReview.review}
                                 </div>
                                 <div className="row">
-                                    <button style={{
-                                        borderRadius: "3px",
-                                        letterSpacing: "1.5px",
-                                        marginTop: "1rem",
-                                        marginRight: ".5rem"
-                                    }} className="review__button"
-                                        onClick={() => this.handleDelete(currentReview._id)}
-                                    >DELETE</button>
+                                    <button
+                                        style={{
+                                            borderRadius: "3px",
+                                            letterSpacing: "1.5px",
+                                            marginTop: "1rem",
+                                            marginRight: ".5rem"
+                                        }}
+                                        className="review__button"
+                                        onClick={() => this.handleDelete(currentReview._id)}>DELETE</button>
                                     <button
                                         style={{
                                             borderRadius: "3px",
@@ -240,16 +302,16 @@ class Profile extends Component {
                                         }}
                                         className="review__button"
                                         onClick={() => this.handleEdit(currentReview._id, currentReview.program, currentReview.review, currentReview.displayName, currentReview.img)}>EDIT</button>
-                                    {this.state.showForm && this.state.formReviewId === currentReview._id ? this.formDisplay() : ''}
+                                    {this.state.showForm && this.state.formReviewId === currentReview._id
+                                        ? this.formDisplay()
+                                        : ''}
                                 </div>
                             </div>
                         )
-                    }
-                    ))}
+                    }))}
             </div>
         )
     }
-
 
 }
 
@@ -258,11 +320,6 @@ Profile.propTypes = {
     auth: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-    auth: state.auth
-});
+const mapStateToProps = state => ({ auth: state.auth });
 
-export default connect(
-    mapStateToProps,
-    { logoutUser }
-)(Profile);
+export default connect(mapStateToProps, { logoutUser })(Profile);
