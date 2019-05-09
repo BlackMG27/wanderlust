@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import API from "../utils/API";
 import Moment from 'react-moment';
-import { Rating } from 'semantic-ui-react';
+import {Rating} from 'semantic-ui-react';
 
 class Review extends Component {
     state = {
@@ -68,10 +68,10 @@ class Review extends Component {
                             <img
                                 className="center-align review__img"
                                 src={this.state.img
-                                    ? this.state.img
-                                    : `https://ui-avatars.com/api/?name=${this.state.displayName}&size=350&background=d37e34&color=384269`}
+                                ? this.state.img
+                                : `https://ui-avatars.com/api/?name=${this.state.displayName}&size=350&background=d37e34&color=384269`}
                                 style={this.imgStyle}
-                                alt={this.state.displayName} />
+                                alt={this.state.displayName}/>
                             <h2 className="review__title">{this.state.displayName}</h2>
                         </div>
                         <div className="col s12 m4"></div>
@@ -80,18 +80,24 @@ class Review extends Component {
                         <div className="col s12 m2"></div>
                         <div className="col s12 m8 center-align">
                             <ul>
-                                <li className="review__category">Program Name: {this.state.program}
+                                <li className="review__category">
+                                    <span className="category">Program Name:</span>&nbsp; {this.state.program}
                                 </li>
-                                <li className="review__category">Organizer: {this.state.tripOrg}
+                                <li className="review__category">
+                                    <span className="category">Trip Organizer:</span>&nbsp; {this.state.tripOrg}
                                 </li>
-                                <li className="review__category">Rating:
-                                    <Rating maxRating={5} disabled={true} rating={this.state.rating} /></li>
-                                <li className="review__category">Dates Traveled:{" "}
+                                <li className="review__category">
+                                    <span className="category">Rating:
+                                    </span>&nbsp;
+                                    <Rating maxRating={5} disabled={true} rating={this.state.rating}/></li>
+                                <li className="review__category">
+                                    <span className="category">Dates Traveled:</span>&nbsp;{" "}
                                     <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateStart}</Moment>
-                                    -
+                                    &nbsp;- &nbsp;
                                     <Moment parse="YYYY/MM/DD hh:mm" format="MM/DD/YY">{this.state.dateEnd}</Moment>
                                 </li>
-                                <li className="review__category">Country: {this.state.country}</li>
+                                <li className="review__category">
+                                    <span className="category">Country:</span>&nbsp; {this.state.country}</li>
                             </ul >
                         </div>
                         <div className="col s12 m2"></div>
