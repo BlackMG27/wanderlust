@@ -58,7 +58,7 @@ class Register extends Component {
         return (
             <div className="container card_mt z-depth-1 card form__view row">
                 <div className="row">
-                    <div className="col s8 offset-s2">
+                    <div className="col s12">
                         <Link to="/" className="btn-flat waves-effect back__home">
                             <i className="material-icons left">keyboard_backspace</i>
                             Back to home
@@ -69,8 +69,7 @@ class Register extends Component {
                                 paddingLeft: "11.250px"
                             }}>
                             <h4>
-                                <b>Register</b>
-                                &nbsp; below
+                                <b>Sign-up</b>
                             </h4>
                             <p>
                                 Already have an account? &nbsp;

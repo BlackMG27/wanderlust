@@ -63,7 +63,7 @@ class Login extends Component {
                         marginTop: "4rem"
                     }}
                     className="row">
-                    <div className="col s8 offset-s2">
+                    <div className="col s12 ">
                         <Link to="/" className="btn-flat waves-effect back__home">
                             <i className="material-icons left">keyboard_backspace</i>
                             Back to home
