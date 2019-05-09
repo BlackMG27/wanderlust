@@ -1,8 +1,8 @@
-import React, {Component} from "react";
-import {Link, withRouter} from "react-router-dom";
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {registerUser} from "../actions/authActions";
+import { connect } from "react-redux";
+import { registerUser } from "../actions/authActions";
 import classnames from "classnames";
 
 class Register extends Component {
@@ -30,7 +30,7 @@ class Register extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
-            this.setState({errors: nextProps.errors});
+            this.setState({ errors: nextProps.errors });
         }
     }
 
@@ -54,11 +54,11 @@ class Register extends Component {
     };
 
     render() {
-        const {errors} = this.state;
+        const { errors } = this.state;
         return (
-            <div className="container z-depth-1 card form__view row">
+            <div className="container card_mt z-depth-1 card form__view row">
                 <div className="row">
-                    <div className="col s8 offset-s2">
+                    <div className="col s12">
                         <Link to="/" className="btn-flat waves-effect back__home">
                             <i className="material-icons left">keyboard_backspace</i>
                             Back to home
@@ -66,11 +66,10 @@ class Register extends Component {
                         <div
                             className="col s12"
                             style={{
-                            paddingLeft: "11.250px"
-                        }}>
+                                paddingLeft: "11.250px"
+                            }}>
                             <h4>
-                                <b>Register</b>
-                                &nbsp; below
+                                <b>Sign-up</b>
                             </h4>
                             <p>
                                 Already have an account? &nbsp;
@@ -85,7 +84,7 @@ class Register extends Component {
                                     error={errors.name}
                                     id="name"
                                     type="text"
-                                    className={classnames("", {invalid: errors.name})}/>
+                                    className={classnames("", { invalid: errors.name })} />
                                 <label htmlFor="name">Name</label>
                                 <span className="red-text">{errors.name}</span>
                             </div>
@@ -96,7 +95,7 @@ class Register extends Component {
                                     error={errors.email}
                                     id="email"
                                     type="email"
-                                    className={classnames("", {invalid: errors.email})}/>
+                                    className={classnames("", { invalid: errors.email })} />
                                 <label htmlFor="email">Email</label>
                                 <span className="red-text">{errors.email}</span>
 
@@ -108,7 +107,7 @@ class Register extends Component {
                                     error={errors.password}
                                     id="password"
                                     type="password"
-                                    className={classnames("", {invalid: errors.password})}/>
+                                    className={classnames("", { invalid: errors.password })} />
                                 <label htmlFor="password">Password</label>
                                 <span className="red-text">{errors.password}</span>
 
@@ -120,7 +119,7 @@ class Register extends Component {
                                     error={errors.password2}
                                     id="password2"
                                     type="password"
-                                    className={classnames("", {invalid: errors.password2})}/>
+                                    className={classnames("", { invalid: errors.password2 })} />
                                 <label htmlFor="password2">Confirm Password</label>
                                 <span className="red-text">{errors.password2}</span>
 
@@ -128,8 +127,8 @@ class Register extends Component {
                             <div
                                 className="col s12"
                                 style={{
-                                paddingLeft: "11.250px"
-                            }}>
+                                    paddingLeft: "11.250px"
+                                }}>
                                 <button type="submit" className="btn register__button">
                                     Sign up
                                 </button>
@@ -149,5 +148,5 @@ Register.propTypes = {
     errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({auth: state.auth, errors: state.errors});
-export default connect(mapStateToProps, {registerUser})(withRouter(Register));
+const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));

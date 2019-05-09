@@ -162,6 +162,10 @@ margin-top: 20px;
   margin: 0 auto;
 }
 
+.card_mt{
+  margin-top: 3rem;
+}
+
 .back__home{
   color: #fff;
 }
