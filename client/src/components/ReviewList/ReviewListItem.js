@@ -35,7 +35,7 @@ function ReviewListItem(props) {
                     <h5>
                         <span className="category">Rating:</span>
                         &nbsp;
-                            <Rating maxRating={5} disabled="true" rating={props.data.rating} /></h5>
+                            <Rating maxRating={5} disabled={true} rating={props.data.rating} /></h5>
                     <a className="btn review__button" href={`/review/${props.data._id}`}>View Review</a>
                 </div>
             </div>
