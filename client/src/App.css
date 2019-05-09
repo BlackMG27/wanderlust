@@ -14,7 +14,11 @@ body{
 .body-splash {
   background-image: url('./images/gorge-shutter-min.jpg');
   background-size: cover;
-  min-height: 210vh;
+  min-height: 120vh;
+}
+
+.drag-target{
+  display: none;
 }
 
 .header__caution{
@@ -70,6 +74,11 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   background-color: #fff;
   padding-top: 40px;
+}
+
+#mapdiv{
+  height: 110vh;
+  background: #fff;
 }
 
 .review__img,

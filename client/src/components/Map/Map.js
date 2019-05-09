@@ -120,7 +120,9 @@ class Map extends React.Component {
 
         //shows the actual map
         return (
-            <div id="chartdiv"></div>
+            <main id="mapdiv">
+                <div id="chartdiv"></div>
+            </main>
         )
     }
 
