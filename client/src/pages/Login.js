@@ -1,8 +1,8 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {loginUser} from "../actions/authActions";
+import { connect } from "react-redux";
+import { loginUser } from "../actions/authActions";
 import classnames from "classnames";
 
 class Login extends Component {
@@ -34,7 +34,7 @@ class Login extends Component {
                 .push("/"); // push user to dashboard when they login
         }
         if (nextProps.errors) {
-            this.setState({errors: nextProps.errors});
+            this.setState({ errors: nextProps.errors });
         }
     }
 
@@ -55,15 +55,15 @@ class Login extends Component {
             .loginUser(userData);
     };
     render() {
-        const {errors} = this.state;
+        const { errors } = this.state;
         return (
-            <div className="container z-depth-1 card form__view row">
+            <div className="container card_mt z-depth-1 card form__view row">
                 <div
                     style={{
-                    marginTop: "4rem"
-                }}
+                        marginTop: "4rem"
+                    }}
                     className="row">
-                    <div className="col s8 offset-s2">
+                    <div className="col s12 ">
                         <Link to="/" className="btn-flat waves-effect back__home">
                             <i className="material-icons left">keyboard_backspace</i>
                             Back to home
@@ -71,8 +71,8 @@ class Login extends Component {
                         <div
                             className="col s12"
                             style={{
-                            paddingLeft: "11.250px"
-                        }}>
+                                paddingLeft: "11.250px"
+                            }}>
                             <h4>
                                 <b>Login</b>
                                 &nbsp; below
@@ -91,8 +91,8 @@ class Login extends Component {
                                     id="email"
                                     type="email"
                                     className={classnames("", {
-                                    invalid: errors.email || errors.emailnotfound
-                                })}/>
+                                        invalid: errors.email || errors.emailnotfound
+                                    })} />
                                 <label htmlFor="email">Email</label>
                                 <span className="red-text">
                                     {errors.email}
@@ -107,8 +107,8 @@ class Login extends Component {
                                     id="password"
                                     type="password"
                                     className={classnames("", {
-                                    invalid: errors.password || errors.passwordincorrect
-                                })}/>
+                                        invalid: errors.password || errors.passwordincorrect
+                                    })} />
                                 <label htmlFor="password">Password</label>
                                 <span className="red-text">
                                     {errors.password}
@@ -118,8 +118,8 @@ class Login extends Component {
                             <div
                                 className="col s12"
                                 style={{
-                                paddingLeft: "11.250px"
-                            }}>
+                                    paddingLeft: "11.250px"
+                                }}>
                                 <button type="submit" className="btn register__button">
                                     Login
                                 </button>
@@ -137,5 +137,5 @@ Login.propTypes = {
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
-const mapStateToProps = state => ({auth: state.auth, errors: state.errors});
-export default connect(mapStateToProps, {loginUser})(Login);
+const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });
+export default connect(mapStateToProps, { loginUser })(Login);
