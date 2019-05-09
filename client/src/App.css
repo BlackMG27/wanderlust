@@ -90,9 +90,9 @@ body{
   border-radius: 50%;
 }
 
-.review-list__img{
-  float: left;
-  padding-top: 10px;
+
+.review-list__img2{
+  margin-top: 40px;
 }
 
 .review-list__text{

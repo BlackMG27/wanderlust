@@ -4,16 +4,10 @@ import Logo from "../../img/logonav.png"
 
 import "../Navbar/Navbar.css"
 
-// import DrawerToggleButton from '../SideDrawer/DrawerToggleButton'; import
-// '../Navbar/Navbar.css' import { logoutUser } from
-// "../../actions/authActions"; console.log("log", logoutUser) function
-// NavTabs(props) {
 class NavTabs extends React.Component {
     burgerClick = () => {
         console.log(document.getElementById('slide-out'))
     }
-
-    // console.log("props", props)
 
     render() {
         return (
@@ -31,13 +25,11 @@ class NavTabs extends React.Component {
                 <ul className="sidenav" id="slide-out">
                     <li className="nav-item">
                         <a
-                            href="/reviewform"
-                            onClick={() => this.props.handlePageChange("Review")}
-                            className={this.props.currentPage === "Review"
-                            ? "nav-link active"
-                            : "nav-link"}>
-                            Review
-                        </a>
+                            href="/map"
+                            onClick=
+                            {() => this.props.handlePageChange("Map")}
+                            className=
+                            {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
                     </li>
                     <li className="nav-item">
                         <a
@@ -50,14 +42,15 @@ class NavTabs extends React.Component {
 
                         </a>
                     </li>
-
                     <li className="nav-item">
                         <a
-                            href="/map"
-                            onClick=
-                            {() => this.props.handlePageChange("Map")}
-                            className=
-                            {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
+                            href="/reviewform"
+                            onClick={() => this.props.handlePageChange("Review")}
+                            className={this.props.currentPage === "Review"
+                            ? "nav-link active"
+                            : "nav-link"}>
+                            Review
+                        </a>
                     </li>
                     <li className="nav-item" onClick={this.props.logout}>
                         <a
@@ -74,13 +67,11 @@ class NavTabs extends React.Component {
                     <ul className="right hide-on-med-and-down">
                         <li className="nav-item">
                             <a
-                                href="/reviewform"
-                                onClick={() => this.props.handlePageChange("Review")}
-                                className={this.props.currentPage === "Review"
-                                ? "nav-link active"
-                                : "nav-link"}>
-                                Review
-                            </a>
+                                href="/map"
+                                onClick=
+                                {() => this.props.handlePageChange("Map")}
+                                className=
+                                {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
                         </li>
                         <li className="nav-item">
                             <a
@@ -95,11 +86,13 @@ class NavTabs extends React.Component {
                         </li>
                         <li className="nav-item">
                             <a
-                                href="/map"
-                                onClick=
-                                {() => this.props.handlePageChange("Map")}
-                                className=
-                                {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
+                                href="/reviewform"
+                                onClick={() => this.props.handlePageChange("Review")}
+                                className={this.props.currentPage === "Review"
+                                ? "nav-link active"
+                                : "nav-link"}>
+                                Review
+                            </a>
                         </li>
                         <li className="nav-item" onClick={this.props.logout}>
                             <a

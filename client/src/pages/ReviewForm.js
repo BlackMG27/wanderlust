@@ -22,7 +22,6 @@ class ReviewForm extends Component {
         rating: "",
         tripOrg: "",
         error: ""
-
     }
 
     onChange = e => {
@@ -30,7 +29,6 @@ class ReviewForm extends Component {
         this.setState({
             [e.target.id]: e.target.value
         });
-        console.log(this.state.review)
     };
 
     handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating })
@@ -50,17 +48,8 @@ class ReviewForm extends Component {
     }
 
     handleFormSubmit = (user) => {
-        //thanks!
         this.setState({ formSubmitted: true })
-
-        //IF ALL FIELDS ARE TRUE SEND DATA
-
-        console.log(user.id, this.state.review)
-
-        //Validation user.preventDefault();
-
         if (this.state.displayName && this.state.program && this.state.tripOrg && this.state.country && this.state.dateStart && this.state.dateEnd && this.state.review) {
-
             API
                 .grabCountryCode(this.state.country)
                 .then((res) => {
@@ -80,53 +69,40 @@ class ReviewForm extends Component {
                     API
                         .createReview(query)
                         .then((res) => {
-                            console.log("res", res)
                             window.location.href = "./map"
                         })
-
                 })
         } else {
             this.setState({ error: "Please fill out the fields marked with **" })
         }
-
     }
 
     //userCheck = user
 
     render() {
         const { user } = this.props.auth;
-        // console.log("user", user) .setState({ user: user })
         return (
             <div className="container z-depth-1 card form__view row card_mt">
-                {/* <form> */}
-
-                {/* displayName */}
-                {/* if displayName is submitted && unfilled we show a message*/}
-
-                {/* else we render normal page */}
                 <div className="input-field col s12">
-
                     <input
                         onChange={this.onChange}
                         value={this.state.displayName}
                         id="displayName"
                         type="text" /> {this.state.formSubmitted && !this.state.displayName
                             ? (
-                                <label htmlFor="text" className="red-text">Name **</label>
+                                <label className="red-text" htmlFor="text" >Name **</label>
                             )
                             : (
-                                <label htmlFor="text">Name</label>
+                                <span htmlFor="text">Name</span>
                             )}
 
                 </div>
-
                 <div className="input-field col s12">
 
                     <input onChange={this.onChange} value={this.state.img} id="img" type="text" />
-                    <label htmlFor="text">Image URL</label>
+                    <span htmlFor="text">Image URL</span>
                 </div>
                 <div className="input-field col s12">
-
                     <input
                         onChange={this.onChange}
                         value={this.state.program}
@@ -136,11 +112,10 @@ class ReviewForm extends Component {
                                 <label htmlFor="text" className="red-text">Program Name **</label>
                             )
                             : (
-                                <label htmlFor="text">Program Name</label>
+                                <span htmlFor="text">Program Name</span>
                             )}
                 </div>
                 <div className="input-field col s12">
-
                     <input
                         onChange={this.onChange}
                         value={this.state.tripOrg}
@@ -152,11 +127,10 @@ class ReviewForm extends Component {
 
                             )
                             : (
-                                <label htmlFor="text">Trip Organizer</label>
+                                <span htmlFor="text">Trip Organizer</span>
                             )}
                 </div>
                 <div className="input-field col s12">
-
                     <input
                         onChange={this.onChange}
                         value={this.state.country}
@@ -167,12 +141,10 @@ class ReviewForm extends Component {
                                 </label>
                             )
                             : (
-                                <label htmlFor="text">Primary Country Visited</label>
+                                <span htmlFor="text">Primary Country Visited</span>
                             )}
                 </div>
-
                 <div className="input-field col s12">
-
                     <DatePicker
                         selected={this.state.dateStart}
                         value={this.state.dateStart}
@@ -189,7 +161,6 @@ class ReviewForm extends Component {
                             )}
                 </div>
                 <div className="input-field col s12">
-
                     <DatePicker
                         selected={this.state.dateEnd}
                         value={this.state.dateEnd}
@@ -205,34 +176,27 @@ class ReviewForm extends Component {
                             </span>
                             )}
                 </div>
-
                 <div className="input-field col s12">
 
+                    <Rating defaultRating={3} maxRating={5} onRate={this.handleRate} /> {/* <pre>{JSON.stringify()}</pre> */}
                     <span className="helper-text" id="rating">How would you rate your experience?
                     </span>
-                    <Rating defaultRating={3} maxRating={5} onRate={this.handleRate} /> {/* <pre>{JSON.stringify()}</pre> */}
-
                 </div>
-
                 <div className="input-field col s12">
-
                     <textarea
                         onChange={this.onChange}
                         value={this.state.review}
                         id="review"
                         type="text"
                         className="materialize-textarea"></textarea>
-
-                    {this.state.formSubmitted && !this.state.country
+                    {this.state.formSubmitted && !this.state.review
                         ? (
                             <label htmlFor="text" className="red-text">Your review (1-4 Paragraphs) **</label>
                         )
                         : (
-                            <label htmlFor="text">Your review (1-4 Paragraphs)</label>
+                            <span htmlFor="text">Your review (1-4 Paragraphs)</span>
                         )}
-
                 </div>
-
                 <button
                     style={{
                         width: "150px",
@@ -249,7 +213,6 @@ class ReviewForm extends Component {
 
     }
 }
-
 ReviewForm.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
