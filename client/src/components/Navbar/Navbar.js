@@ -4,7 +4,6 @@ import Logo from "../../img/logonav.png"
 
 import "../Navbar/Navbar.css"
 
-
 class NavTabs extends React.Component {
     burgerClick = () => {
         console.log(document.getElementById('slide-out'))
@@ -37,8 +36,8 @@ class NavTabs extends React.Component {
                             href="/login"
                             onClick={() => this.props.handlePageChange("Login")}
                             className={this.props.currentPage === "Login"
-                                ? "nav-link active"
-                                : "nav-link"}>
+                            ? "nav-link active"
+                            : "nav-link"}>
                             Login / Profile
 
                         </a>
@@ -48,8 +47,8 @@ class NavTabs extends React.Component {
                             href="/reviewform"
                             onClick={() => this.props.handlePageChange("Review")}
                             className={this.props.currentPage === "Review"
-                                ? "nav-link active"
-                                : "nav-link"}>
+                            ? "nav-link active"
+                            : "nav-link"}>
                             Review
                         </a>
                     </li>
@@ -64,7 +63,7 @@ class NavTabs extends React.Component {
 
                 <div className="nav-wrapper toolbar__navigation">
                     <div></div>
-                    <a href="/" className="brand-logo toolbar__logo "><img className="logo__smaller" src={Logo} /></a>
+                    <a href="/" className="brand-logo toolbar__logo "><img className="logo__smaller" src={Logo} alt="Wanderlust Menu Logo"/></a>
                     <ul className="right hide-on-med-and-down">
                         <li className="nav-item">
                             <a
@@ -79,8 +78,8 @@ class NavTabs extends React.Component {
                                 href="/login"
                                 onClick={() => this.props.handlePageChange("Login")}
                                 className={this.props.currentPage === "Login"
-                                    ? "nav-link active"
-                                    : "nav-link"}>
+                                ? "nav-link active"
+                                : "nav-link"}>
                                 Login / Profile
 
                             </a>
@@ -90,8 +89,8 @@ class NavTabs extends React.Component {
                                 href="/reviewform"
                                 onClick={() => this.props.handlePageChange("Review")}
                                 className={this.props.currentPage === "Review"
-                                    ? "nav-link active"
-                                    : "nav-link"}>
+                                ? "nav-link active"
+                                : "nav-link"}>
                                 Review
                             </a>
                         </li>
