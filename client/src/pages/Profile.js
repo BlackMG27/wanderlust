@@ -150,7 +150,7 @@ class Profile extends Component {
         }
 
         if (submitImg === "") {
-            submitImg = `https://ui-avatars.com/api/?name=${submitDisplayName}`
+            submitImg = `https://ui-avatars.com/api/?name=${submitDisplayName}&size=350&background=d37e34&color=384269`
         }
 
         query.img = submitImg
