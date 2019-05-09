@@ -37,7 +37,6 @@ class Profile extends Component {
         API.archiveReview(id).then(res => {
             // console.log(res)
         }).then(API.getProfile(this.props.auth.user.id).then((res) => {
-            console.log("res", res)
             this.setState({
                 email: res.data.email,
                 username: res.data.username,
@@ -49,7 +48,7 @@ class Profile extends Component {
 
     componentDidMount() {
         API.getProfile(this.props.auth.user.id).then((res) => {
-            console.log("res", res)
+            // console.log("res", res)
             this.setState({
                 email: res.data.email,
                 username: res.data.username,
@@ -59,7 +58,6 @@ class Profile extends Component {
     }
 
     handleEdit(reviewId, program, content, name, img) {
-        console.log('review id', reviewId);
         this.setState({
             formReviewId: reviewId,
             showForm: !this.state.showForm,
@@ -72,7 +70,6 @@ class Profile extends Component {
 
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
-        console.log(this.state)
     };
 
     formDisplay = () => {
@@ -178,7 +175,6 @@ class Profile extends Component {
     render() {
 
         const { user } = this.props.auth;
-        console.log("id", user.id)
         return (
             <div className="container" >
                 <div key="1" className="card card_mt" style={this.cardStyle}>
@@ -187,7 +183,6 @@ class Profile extends Component {
                             <h4>Email:</h4> <h3 className="review__title">{this.state.email}</h3>
                             <br />
                         </div>
-                        {/* <div className="row"> */}
                         <div className="col s12 m6 center-align">
                             <h4>User Name:</h4> <h3 className="review__title">{this.state.username}</h3>
                         </div>
