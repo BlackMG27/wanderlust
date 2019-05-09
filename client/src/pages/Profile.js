@@ -200,7 +200,7 @@ class Profile extends Component {
                                     <div className="col s12 m4"></div>
                                     <div className="col s12 m4 center-align">
 
-                                        <img className="center-align" src={currentReview.img ? currentReview.img : `https://ui-avatars.com/api/?name=${currentReview.displayName}`} style={this.imgStyle} alt="trip" />
+                                        <img className="center-align" src={currentReview.img ? currentReview.img : `https://ui-avatars.com/api/?name=${currentReview.displayName}&size=350&background=d37e34&color=384269`} style={this.imgStyle} alt="trip" />
                                         <h2 className="review__title">{currentReview.displayName}</h2>
                                     </div>
                                     <div className="col s12 m4"></div>

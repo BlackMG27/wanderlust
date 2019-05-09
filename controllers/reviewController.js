@@ -36,7 +36,7 @@ module.exports = {
     findAllCodes: function (req, res) {
         db
             .Review
-            .find({}, {
+            .find({ isArchived: false }, {
                 "_id": 0,
                 "countryCode": 1
             })
