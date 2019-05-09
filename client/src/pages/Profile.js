@@ -183,10 +183,14 @@ class Profile extends Component {
             <div className="container" >
                 <div key="1" className="card card_mt" style={this.cardStyle}>
                     <div className="row">
-                        <h6>Email:</h6> <h5>{this.state.email}</h5>
-                    </div>
-                    <div className="row">
-                        <h6>User Name:</h6> <h5>{this.state.username}</h5>
+                        <div className="col s12 m6 center-align">
+                            <h4>Email:</h4> <h3 className="review__title">{this.state.email}</h3>
+                            <br />
+                        </div>
+                        {/* <div className="row"> */}
+                        <div className="col s12 m6 center-align">
+                            <h4>User Name:</h4> <h3 className="review__title">{this.state.username}</h3>
+                        </div>
                     </div>
                 </div>
 
@@ -202,7 +206,7 @@ class Profile extends Component {
                                     <div className="col s12 m4 center-align">
 
                                         <img className="center-align" src={currentReview.img ? currentReview.img : `https://ui-avatars.com/api/?name=${currentReview.displayName}`} style={this.imgStyle} alt="trip" />
-                                        <h5>{currentReview.displayName}</h5>
+                                        <h2 className="review__title">{currentReview.displayName}</h2>
                                     </div>
                                     <div className="col s12 m4"></div>
                                 </div>
