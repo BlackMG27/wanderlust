@@ -4,6 +4,8 @@ Live Link: https://satisfying-wanderlust.herokuapp.com/
 
 Pitch: This is a yelp for study abroad programs using the MERN stack.
 
+Google Slides: https://docs.google.com/presentation/d/1m3G-Ar9S4n45R_LdU50G9WJxbJpMkmwt9PS71Qu-3yM/edit#slide=id.g59eacd8858_6_97
+
 
 ## Introduction
 
