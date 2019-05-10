@@ -124,6 +124,7 @@ body{
 
 .review-list__text h5{
   font-size: 1.25rem;
+  line-height: 1.75rem;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   line-height: 90%;
 }
