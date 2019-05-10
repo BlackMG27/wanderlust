@@ -33,19 +33,19 @@ We wanted to create an interactive website where people could share their experi
 
 ## Core Technologies Used
 **Front End:**
-React.js
-Redux
-Semantic UI
-AM Charts
-Axios
-Materialize CSS
+- React.js
+- Redux
+- Semantic UI
+- AM Charts
+- Axios
+- Materialize CSS
 
 **Back End:**
-Mongoose (ORM)
-Node.js
-Express.js
-Passport.js
-Bcrypt.js
+- Mongoose (ORM)
+- Node.js
+- Express.js
+- Passport.js
+- Bcrypt.js
 
 **Database:**
 MongoDB
