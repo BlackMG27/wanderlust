@@ -25,12 +25,15 @@ class NavTabs extends React.Component {
                     <li className="nav-item">
                         <Link
                             to="/map"
+                            onClick=
+                            {() => this.props.handlePageChange("Map")}
                             className=
                             {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</Link>
                     </li>
                     <li className="nav-item">
                         <Link
-                            to="/login"
+                            to={"/login"}
+                            onClick={() => this.props.handlePageChange("Login")}
                             className={this.props.currentPage === "Login"
                             ? "nav-link active"
                             : "nav-link"}>
@@ -40,7 +43,8 @@ class NavTabs extends React.Component {
                     </li>
                     <li className="nav-item">
                         <Link
-                            to="/reviewform"
+                            to={"/reviewform"}
+                            onClick={() => this.props.handlePageChange("Review")}
                             className={this.props.currentPage === "Review"
                             ? "nav-link active"
                             : "nav-link"}>
@@ -62,6 +66,8 @@ class NavTabs extends React.Component {
                     <ul className="right hide-on-med-and-down">
                         <li className="nav-item">
                             <Link
+                                onClick=
+                                {() => this.props.handlePageChange("Map")}
                                 to={'/map'}
                                 className=
                                 {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</Link>
@@ -69,6 +75,7 @@ class NavTabs extends React.Component {
                         <li className="nav-item">
                             <Link
                                 to={"/login"}
+                                onClick={() => this.props.handlePageChange("Login")}
                                 className={this.props.currentPage === "Login"
                                 ? "nav-link active"
                                 : "nav-link"}>
@@ -78,7 +85,8 @@ class NavTabs extends React.Component {
                         </li>
                         <li className="nav-item">
                             <Link
-                                to="/reviewform"
+                                to={"/reviewform"}
+                                onClick={() => this.props.handlePageChange("Review")}
                                 className={this.props.currentPage === "Review"
                                 ? "nav-link active"
                                 : "nav-link"}>
