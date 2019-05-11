@@ -1,8 +1,7 @@
 import React from "react";
-
+import {Link} from 'react-router-dom';
 import Logo from "../../img/logonav.png"
-
-import "../Navbar/Navbar.css"
+import "../Navbar/Navbar.css";
 
 class NavTabs extends React.Component {
     burgerClick = () => {
@@ -24,90 +23,79 @@ class NavTabs extends React.Component {
 
                 <ul className="sidenav" id="slide-out">
                     <li className="nav-item">
-                        <a
-                            href="/map"
-                            onClick=
-                            {() => this.props.handlePageChange("Map")}
+                        <Link
+                            to="/map"
                             className=
-                            {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
+                            {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</Link>
                     </li>
                     <li className="nav-item">
-                        <a
-                            href="/login"
-                            onClick={() => this.props.handlePageChange("Login")}
+                        <Link
+                            to="/login"
                             className={this.props.currentPage === "Login"
                             ? "nav-link active"
                             : "nav-link"}>
                             Login / Profile
 
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a
-                            href="/reviewform"
-                            onClick={() => this.props.handlePageChange("Review")}
+                        <Link
+                            to="/reviewform"
                             className={this.props.currentPage === "Review"
                             ? "nav-link active"
                             : "nav-link"}>
                             Review
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item" onClick={this.props.logout}>
-                        <a
-                            href="/"
+                        <Link
+                            to="/"
                             className=
-                            {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
+                            {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</Link>
                     </li>
 
                 </ul>
 
                 <div className="nav-wrapper toolbar__navigation">
                     <div></div>
-                    <a href="/" className="brand-logo toolbar__logo "><img className="logo__smaller" src={Logo} alt="Wanderlust Menu Logo"/></a>
+                    <Link to={'/'} className="brand-logo toolbar__logo "><img className="logo__smaller" src={Logo} alt="Wanderlust Menu Logo"/></Link>
                     <ul className="right hide-on-med-and-down">
                         <li className="nav-item">
-                            <a
-                                href="/map"
-                                onClick=
-                                {() => this.props.handlePageChange("Map")}
+                            <Link
+                                to={'/map'}
                                 className=
-                                {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</a>
+                                {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>Map</Link>
                         </li>
                         <li className="nav-item">
-                            <a
-                                href="/login"
-                                onClick={() => this.props.handlePageChange("Login")}
+                            <Link
+                                to={"/login"}
                                 className={this.props.currentPage === "Login"
                                 ? "nav-link active"
                                 : "nav-link"}>
                                 Login / Profile
 
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a
-                                href="/reviewform"
-                                onClick={() => this.props.handlePageChange("Review")}
+                            <Link
+                                to="/reviewform"
                                 className={this.props.currentPage === "Review"
                                 ? "nav-link active"
                                 : "nav-link"}>
                                 Review
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item" onClick={this.props.logout}>
-                            <a
-                                href="/"
+                            <Link
+                                to={"/"}
                                 className=
-                                {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</a>
+                                {this.props.currentPage === "Map" ? "nav-link active" : "nav-link"}>LogOut</Link>
                         </li>
                     </ul>
                 </div>
-
             </nav>
-
-        );
-
+        )
     }
-};
+}
 
 export default NavTabs;

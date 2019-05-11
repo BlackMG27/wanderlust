@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import {Rating} from 'semantic-ui-react';
 
 function ReviewListItem(props) {
@@ -34,7 +35,7 @@ function ReviewListItem(props) {
                         <span className="category">Rating:</span>
                         &nbsp;
                         <Rating maxRating={5} disabled={true} rating={props.data.rating}/></h5>
-                    <a className="btn review__button" href={`/review/${props.data._id}`}>View Review</a>
+                    <Link className="btn review__button" to={`/review/${props.data._id}`}>View Review</Link>
                 </div>
             </div>
 

@@ -11,7 +11,6 @@ class ReviewList extends Component {
             .pathname
             .split("/");
         const idFromURL = goal[goal.length - 1];
-        console.log(idFromURL);
         API
             .getCountryReviews(idFromURL)
             .then(result => this.setState({reviews: result.data}));
@@ -22,7 +21,6 @@ class ReviewList extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <Fragment>
 
