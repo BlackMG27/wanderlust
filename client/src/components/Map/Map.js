@@ -4,6 +4,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import API from "../../utils/API";
+import {Link} from 'react-router-dom';
 //import the api file here
 class Map extends React.Component {
 

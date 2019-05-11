@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import API from "../utils/API";
 import Moment from 'react-moment';
+import {Link} from 'react-router-dom';
 import {Rating} from 'semantic-ui-react';
 
 class Review extends Component {
@@ -105,7 +106,7 @@ class Review extends Component {
 
                     </div>
                     <div className="row">
-                        <a className="review__button" href={"/reviewlist/" + this.state.countryCode}>Back to Country</a>
+                        <Link className="review__button" to={"/reviewlist/" + this.state.countryCode}>Back to Country</Link>
                     </div>
 
                 </div >

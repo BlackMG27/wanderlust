@@ -15,7 +15,6 @@ function LandingPage() {
                 service to find real student’s reviews of study abroad trips in the countries
                 that you want to visit. Take a trip you trust with Wanderlust.</p>
             <p className="contributors">Made by Ogechi + Nick + Jaime + Izzy</p>
-            <p className="header__caution">**Best Viewed in Landscape**</p>
         </div>
 
     )
