@@ -14,10 +14,10 @@ Study abroad semesters can be incredible experiences. But with so many options, 
 We wanted to create an interactive website where people could share their experiences. For the design of our app, we planned to create an interactive, responsive map as our centerpiece. This map automatically updates whenever a review for a new country is added to our database. We hope this site could become a resource for study abroad offices at schools around the country
 
 ## Team
-Ogechi - https://github.com/BlackMG27
-Izzy  - https://github.com/Strontiumsun
-Jaime - https://github.com/jzepedaa
-Nick  - https://github.com/nikorasu-san
+* Ogechi - https://github.com/BlackMG27
+* Izzy  - https://github.com/Strontiumsun
+* Jaime - https://github.com/jzepedaa
+* Nick  - https://github.com/nikorasu-san
 
 ## User Guide
 **Seeing a review:**
